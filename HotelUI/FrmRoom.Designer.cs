@@ -72,25 +72,28 @@
             this.tmiUpdate,
             this.tmiDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
             // 
             // tmiAdd
             // 
             this.tmiAdd.Name = "tmiAdd";
-            this.tmiAdd.Size = new System.Drawing.Size(100, 22);
+            this.tmiAdd.Size = new System.Drawing.Size(152, 22);
             this.tmiAdd.Text = "新增";
+            this.tmiAdd.Click += new System.EventHandler(this.tmiAdd_Click);
             // 
             // tmiUpdate
             // 
             this.tmiUpdate.Name = "tmiUpdate";
-            this.tmiUpdate.Size = new System.Drawing.Size(100, 22);
+            this.tmiUpdate.Size = new System.Drawing.Size(152, 22);
             this.tmiUpdate.Text = "修改";
+            this.tmiUpdate.Click += new System.EventHandler(this.tmiUpdate_Click);
             // 
             // tmiDelete
             // 
             this.tmiDelete.Name = "tmiDelete";
-            this.tmiDelete.Size = new System.Drawing.Size(100, 22);
+            this.tmiDelete.Size = new System.Drawing.Size(152, 22);
             this.tmiDelete.Text = "删除";
+            this.tmiDelete.Click += new System.EventHandler(this.tmiDelete_Click);
             // 
             // rboFree
             // 

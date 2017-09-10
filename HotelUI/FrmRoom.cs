@@ -53,6 +53,38 @@ namespace Hotel.UI
         }
         #endregion
 
+        #region 快捷菜单
+        /// <summary>
+        /// 快捷菜单新增
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void tmiAdd_Click(object sender, EventArgs e)
+        {
+            tsbAdd_Click(sender, e);
+        }
+
+        /// <summary>
+        /// 快捷菜单修改
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void tmiUpdate_Click(object sender, EventArgs e)
+        {
+            tsbUpdate_Click(sender, e);
+        }
+
+        /// <summary>
+        /// 快捷菜单删除
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void tmiDelete_Click(object sender, EventArgs e)
+        {
+            tsbDelete_Click(sender, e);
+        }
+        #endregion
+
         /// <summary>
         /// 窗体加载事件
         /// </summary>
@@ -105,6 +137,36 @@ namespace Hotel.UI
         }
 
         /// <summary>
+        /// 删除事件
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void tsbDelete_Click(object sender, EventArgs e)
+        {
+            string id = dgvRoomInfo.SelectedRows[0].Cells[1].Value.ToString();
+            DialogResult r = MessageBox.Show("确定是否要删除" + id + "房间", "操作提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (r == DialogResult.Yes)
+            {
+                if (roomComm.JudgeRoom(id))
+                {
+                    MessageBox.Show("有" + id + "房间相关的订单，要删除" + id + "房间，请先删除该房间相关的订单！", "操作提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    if (roomComm.DeleteRoom(id))
+                    {
+                        MessageBox.Show("删除成功");
+                        InitilizeEdit();
+                    }
+                    else
+                    {
+                        MessageBox.Show("删除失败");
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// 退出事件
         /// </summary>
         /// <param name="sender">sender</param>
@@ -135,6 +197,24 @@ namespace Hotel.UI
         }
 
         /// <summary>
+        /// 编辑区新增按钮
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (btnEdit.Text.Equals("新增"))
+            {
+                AddRoom();
+            }
+            else
+            {
+                UpdateRoom();
+            }
+
+        }
+
+        /// <summary>
         /// 绑定房间类型
         /// </summary>
         private void BindingType()
@@ -162,6 +242,7 @@ namespace Hotel.UI
             List<RoomTypeList> list = roomComm.GetRoomInfo(txtRoomId.Text.Trim().ToString());
             dgvRoomInfo.DataSource = list;
         }
+
         /// <summary>
         /// 初始化全部信息
         /// </summary>
@@ -174,24 +255,6 @@ namespace Hotel.UI
             cbxRoomType.ResetText();
             btnEdit.Text = string.Empty;
             dgvRoomInfo.Enabled = true;
-        }
-
-        /// <summary>
-        /// 编辑区新增按钮
-        /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">e</param>
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (btnEdit.Text.Equals("新增"))
-            {
-                AddRoom();
-            }
-            else
-            {
-                UpdateRoom();
-            }
-
         }
 
         /// <summary>
@@ -271,34 +334,8 @@ namespace Hotel.UI
         }
 
 
-        /// <summary>
-        /// 删除事件
-        /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">e</param>
-        private void tsbDelete_Click(object sender, EventArgs e)
-        {
-            string id = dgvRoomInfo.SelectedRows[0].Cells[1].Value.ToString();
-            DialogResult r = MessageBox.Show("确定是否要删除" + id + "房间", "操作提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (r == DialogResult.Yes)
-            {
-                if (roomComm.JudgeRoom(id))
-                {
-                    MessageBox.Show("有" + id + "房间相关的订单，要删除" + id + "房间，请先删除该房间相关的订单！", "操作提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                else
-                {
-                    if (roomComm.DeleteRoom(id))
-                    {
-                        MessageBox.Show("删除成功");
-                        InitilizeEdit();
-                    }
-                    else
-                    {
-                        MessageBox.Show("删除失败");
-                    }
-                }
-            }
-        }
+        
+
+      
     }
 }
