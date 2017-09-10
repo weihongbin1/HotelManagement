@@ -41,6 +41,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.gbxEditInfo = new System.Windows.Forms.GroupBox();
+            this.cbxRoomType = new System.Windows.Forms.ComboBox();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.rboRepair = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtRoomId = new System.Windows.Forms.TextBox();
@@ -52,9 +55,6 @@
             this.tsbCancel = new System.Windows.Forms.ToolStripButton();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.dgvRoomInfo = new System.Windows.Forms.DataGridView();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.cbxRoomType = new System.Windows.Forms.ComboBox();
-            this.rboRepair = new System.Windows.Forms.RadioButton();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -167,6 +167,35 @@
             this.gbxEditInfo.TabStop = false;
             this.gbxEditInfo.Text = "房间信息维护";
             // 
+            // cbxRoomType
+            // 
+            this.cbxRoomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxRoomType.FormattingEnabled = true;
+            this.cbxRoomType.Location = new System.Drawing.Point(68, 58);
+            this.cbxRoomType.Name = "cbxRoomType";
+            this.cbxRoomType.Size = new System.Drawing.Size(205, 20);
+            this.cbxRoomType.TabIndex = 10;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Font = new System.Drawing.Font("楷体", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnEdit.Location = new System.Drawing.Point(334, 50);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(88, 38);
+            this.btnEdit.TabIndex = 9;
+            this.btnEdit.Text = "新增";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
+            // rboRepair
+            // 
+            this.rboRepair.AutoSize = true;
+            this.rboRepair.Location = new System.Drawing.Point(330, 24);
+            this.rboRepair.Name = "rboRepair";
+            this.rboRepair.Size = new System.Drawing.Size(47, 16);
+            this.rboRepair.TabIndex = 8;
+            this.rboRepair.Text = "维修";
+            this.rboRepair.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -228,6 +257,7 @@
             this.tsbAdd.Name = "tsbAdd";
             this.tsbAdd.Size = new System.Drawing.Size(68, 22);
             this.tsbAdd.Text = "新增(&A)";
+            this.tsbAdd.Click += new System.EventHandler(this.tsbAdd_Click);
             // 
             // tsbUpdate
             // 
@@ -283,35 +313,6 @@
             this.dgvRoomInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRoomInfo.Size = new System.Drawing.Size(428, 262);
             this.dgvRoomInfo.TabIndex = 14;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Font = new System.Drawing.Font("楷体", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnEdit.Location = new System.Drawing.Point(334, 50);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(88, 38);
-            this.btnEdit.TabIndex = 9;
-            this.btnEdit.Text = "新增";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // cbxRoomType
-            // 
-            this.cbxRoomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxRoomType.FormattingEnabled = true;
-            this.cbxRoomType.Location = new System.Drawing.Point(68, 58);
-            this.cbxRoomType.Name = "cbxRoomType";
-            this.cbxRoomType.Size = new System.Drawing.Size(205, 20);
-            this.cbxRoomType.TabIndex = 10;
-            // 
-            // rboRepair
-            // 
-            this.rboRepair.AutoSize = true;
-            this.rboRepair.Location = new System.Drawing.Point(330, 24);
-            this.rboRepair.Name = "rboRepair";
-            this.rboRepair.Size = new System.Drawing.Size(47, 16);
-            this.rboRepair.TabIndex = 8;
-            this.rboRepair.Text = "维修";
-            this.rboRepair.UseVisualStyleBackColor = true;
             // 
             // Column1
             // 

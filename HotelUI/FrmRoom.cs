@@ -53,7 +53,7 @@ namespace Hotel.UI
         private void FrmRoom_Load(object sender, EventArgs e)
         {
             BindingType();
-            BindingRoomInfo();
+            
             InitilizeEdit();
         }
 
@@ -100,13 +100,23 @@ namespace Hotel.UI
         /// </summary>
         private void InitilizeEdit()
         {
+            BindingRoomInfo();
             gbxEditInfo.Enabled = false;
             txtID.Text = string.Empty;
             rboCheck.Checked = true;
             cbxRoomType.ResetText();
             btnEdit.Text = string.Empty;
+            dgvRoomInfo.Enabled = true;
         }
 
-        
+        /// <summary>
+        /// 新增事件
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void tsbAdd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
