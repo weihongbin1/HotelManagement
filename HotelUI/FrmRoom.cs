@@ -54,6 +54,7 @@ namespace Hotel.UI
         {
             BindingType();
             BindingRoomInfo();
+            InitilizeEdit();
         }
 
         /// <summary>
@@ -99,7 +100,11 @@ namespace Hotel.UI
         /// </summary>
         private void InitilizeEdit()
         {
-
+            gbxEditInfo.Enabled = false;
+            txtID.Text = string.Empty;
+            rboCheck.Checked = true;
+            cbxRoomType.ResetText();
+            btnEdit.Text = string.Empty;
         }
 
         
