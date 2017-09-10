@@ -94,6 +94,13 @@ namespace Hotel.UI
             List<RoomTypeList> list = roomComm.GetRoomInfo(txtRoomId.Text.Trim().ToString());
             dgvRoomInfo.DataSource = list;
         }
+        /// <summary>
+        /// 初始化全部信息
+        /// </summary>
+        private void InitilizeEdit()
+        {
+
+        }
 
         
     }
