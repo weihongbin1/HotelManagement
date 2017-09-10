@@ -107,6 +107,10 @@ namespace Hotel.UI
             gbxEditInfo.Enabled = true;
             dgvRoomInfo.Enabled = false;
             btnEdit.Text = "新增";
+            tsbUpdate.Enabled = false;
+            tmiUpdate.Enabled = false;
+            tsbDelete.Enabled = false;
+            tmiDelete.Enabled = false;
         }
 
         /// <summary>
@@ -118,6 +122,10 @@ namespace Hotel.UI
         {
             gbxEditInfo.Enabled = true;
             dgvRoomInfo.Enabled = false;
+            tsbAdd.Enabled = false;
+            tmiAdd.Enabled = false;
+            tsbDelete.Enabled = false;
+            tmiDelete.Enabled = false;
             btnEdit.Text = "修改";
             updateId = dgvRoomInfo.SelectedRows[0].Cells[1].Value.ToString();
             txtID.Text = updateId;
@@ -255,6 +263,12 @@ namespace Hotel.UI
             cbxRoomType.ResetText();
             btnEdit.Text = string.Empty;
             dgvRoomInfo.Enabled = true;
+            tsbAdd.Enabled = true;
+            tmiAdd.Enabled = true;
+            tsbUpdate.Enabled = true;
+            tmiUpdate.Enabled = true;
+            tsbDelete.Enabled = true;
+            tmiDelete.Enabled = true;
         }
 
         /// <summary>
@@ -286,6 +300,7 @@ namespace Hotel.UI
                 if (roomComm.AddRoom(room))
                 {
                     InitilizeEdit();
+                    
                 }
                 else
                 {
