@@ -267,6 +267,7 @@
             this.tsbUpdate.Name = "tsbUpdate";
             this.tsbUpdate.Size = new System.Drawing.Size(69, 22);
             this.tsbUpdate.Text = "修改(&U)";
+            this.tsbUpdate.Click += new System.EventHandler(this.tsbUpdate_Click);
             // 
             // tsbDelete
             // 

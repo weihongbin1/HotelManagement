@@ -70,6 +70,33 @@ namespace Hotel.UI
         }
 
         /// <summary>
+        /// 修改事件
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void tsbUpdate_Click(object sender, EventArgs e)
+        {
+            gbxEditInfo.Enabled = true;
+            dgvRoomInfo.Enabled = false;
+            btnEdit.Text = "修改";
+            MessageBox.Show(dgvRoomInfo.SelectedRows[0].Cells[2].Value.ToString());
+            txtID.Text = dgvRoomInfo.SelectedRows[0].Cells[1].Value.ToString();
+            if (dgvRoomInfo.SelectedRows[0].Cells[2].Value.Equals("入住"))
+            {
+                rboCheck.Checked = true;
+            }
+            else if (dgvRoomInfo.SelectedRows[0].Cells[2].Value.Equals("空闲"))
+            {
+                rboFree.Checked = true;
+            }
+            else
+            {
+                rboRepair.Checked = true;
+            }
+            cbxRoomType.Text = dgvRoomInfo.SelectedRows[0].Cells[0].Value.ToString();
+        }
+
+        /// <summary>
         /// 查询按钮单击事件
         /// </summary>
         /// <param name="sender">sender</param>
@@ -128,15 +155,23 @@ namespace Hotel.UI
         /// <param name="e">e</param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            AddRoom();
+            if (btnEdit.Text.Equals ("新增"))
+            {
+                AddRoom();
+            }
+            else
+            {
+                UpdateRoom();
+            }
+           
         }
-        
+
         /// <summary>
         /// 增加房间
         /// </summary>
         private void AddRoom()
         {
-            
+
             if (txtID.Text.Trim().Length == 0)
             {
                 MessageBox.Show("房间名不能为空");
@@ -168,5 +203,23 @@ namespace Hotel.UI
                 }
             }
         }
+
+       /// <summary>
+       /// 修改房间
+       /// </summary>
+        private void UpdateRoom()
+        {
+            
+            if (txtID.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("房间名不能为空");
+            }
+            else
+            {
+                
+            }
+        }
+
+
     }
 }
