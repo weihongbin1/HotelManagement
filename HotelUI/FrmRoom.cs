@@ -116,7 +116,8 @@ namespace Hotel.UI
         /// <param name="e">e</param>
         private void tsbAdd_Click(object sender, EventArgs e)
         {
-
+            gbxEditInfo.Enabled = true;
+            dgvRoomInfo.Enabled = false;
         }
     }
 }
