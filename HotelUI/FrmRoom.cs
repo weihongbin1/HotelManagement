@@ -66,6 +66,7 @@ namespace Hotel.UI
         {
             gbxEditInfo.Enabled = true;
             dgvRoomInfo.Enabled = false;
+            btnEdit.Text = "新增";
         }
 
         /// <summary>
@@ -127,11 +128,15 @@ namespace Hotel.UI
         /// <param name="e">e</param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            AddRoom()
+            AddRoom();
         }
-
+        
+        /// <summary>
+        /// 增加房间
+        /// </summary>
         private void AddRoom()
         {
+            
             if (txtID.Text.Trim().Length == 0)
             {
                 MessageBox.Show("房间名不能为空");
@@ -152,6 +157,15 @@ namespace Hotel.UI
                     state = 3;
                 }
                 Room room = new Room() { RoomId = Convert.ToInt32(txtID.Text.Trim()), RoomStateId = state, RoomTypeId = Convert.ToInt32(cbxRoomType.SelectedValue) };
+                if (roomComm.AddRoom(room))
+                {
+                    InitilizeEdit();
+                }
+                else
+                {
+                    MessageBox.Show("添加失败，请确认是否房间名重名");
+                    txtID.Focus();
+                }
             }
         }
     }
