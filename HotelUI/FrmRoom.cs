@@ -58,6 +58,17 @@ namespace Hotel.UI
         }
 
         /// <summary>
+        /// 新增事件
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void tsbAdd_Click(object sender, EventArgs e)
+        {
+            gbxEditInfo.Enabled = true;
+            dgvRoomInfo.Enabled = false;
+        }
+
+        /// <summary>
         /// 查询按钮单击事件
         /// </summary>
         /// <param name="sender">sender</param>
@@ -110,14 +121,29 @@ namespace Hotel.UI
         }
 
         /// <summary>
-        /// 新增事件
+        /// 编辑区新增按钮
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">e</param>
-        private void tsbAdd_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            gbxEditInfo.Enabled = true;
-            dgvRoomInfo.Enabled = false;
+            AddRoom()
+        }
+
+        private void AddRoom()
+        {
+            if (txtID.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("房间名不能为空");
+            }
+            else
+            {
+                string state;
+                if (rboCheck.Checked==true)
+                {
+                    state = "1";
+                }
+            }
         }
     }
 }

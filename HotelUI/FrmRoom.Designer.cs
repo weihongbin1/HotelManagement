@@ -185,6 +185,7 @@
             this.btnEdit.TabIndex = 9;
             this.btnEdit.Text = "新增";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // rboRepair
             // 
