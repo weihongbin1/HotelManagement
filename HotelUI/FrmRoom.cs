@@ -13,7 +13,15 @@ namespace Hotel.UI
 {
     public partial class FrmRoom : Form
     {
+        /// <summary>
+        /// 实例化房间命令类
+        /// </summary>
         FrmRoomComm roomComm = new FrmRoomComm();
+
+        /// <summary>
+        /// 需要修改的房间编号
+        /// </summary>
+        private string updateId;
         public FrmRoom()
         {
             InitializeComponent();
@@ -79,8 +87,8 @@ namespace Hotel.UI
             gbxEditInfo.Enabled = true;
             dgvRoomInfo.Enabled = false;
             btnEdit.Text = "修改";
-            MessageBox.Show(dgvRoomInfo.SelectedRows[0].Cells[2].Value.ToString());
-            txtID.Text = dgvRoomInfo.SelectedRows[0].Cells[1].Value.ToString();
+            updateId = dgvRoomInfo.SelectedRows[0].Cells[1].Value.ToString();
+            txtID.Text = updateId;
             if (dgvRoomInfo.SelectedRows[0].Cells[2].Value.Equals("入住"))
             {
                 rboCheck.Checked = true;
@@ -94,6 +102,26 @@ namespace Hotel.UI
                 rboRepair.Checked = true;
             }
             cbxRoomType.Text = dgvRoomInfo.SelectedRows[0].Cells[0].Value.ToString();
+        }
+
+        /// <summary>
+        /// 退出事件
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void tsbExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        /// <summary>
+        /// 取消事件
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void tsbCancel_Click(object sender, EventArgs e)
+        {
+            InitilizeEdit();
         }
 
         /// <summary>
@@ -155,7 +183,7 @@ namespace Hotel.UI
         /// <param name="e">e</param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (btnEdit.Text.Equals ("新增"))
+            if (btnEdit.Text.Equals("新增"))
             {
                 AddRoom();
             }
@@ -163,7 +191,7 @@ namespace Hotel.UI
             {
                 UpdateRoom();
             }
-           
+
         }
 
         /// <summary>
@@ -204,22 +232,73 @@ namespace Hotel.UI
             }
         }
 
-       /// <summary>
-       /// 修改房间
-       /// </summary>
+        /// <summary>
+        /// 修改房间
+        /// </summary>
         private void UpdateRoom()
         {
-            
+
             if (txtID.Text.Trim().Length == 0)
             {
                 MessageBox.Show("房间名不能为空");
             }
             else
             {
-                
+                int state;
+                if (rboCheck.Checked == true)
+                {
+                    state = 1;
+                }
+                else if (rboFree.Checked == true)
+                {
+                    state = 2;
+                }
+                else
+                {
+                    state = 3;
+                }
+                Room room = new Room() { RoomId = Convert.ToInt32(txtID.Text.Trim()), RoomStateId = state, RoomTypeId = Convert.ToInt32(cbxRoomType.SelectedValue) };
+                if (roomComm.UpdateRoom(room, updateId))
+                {
+                    InitilizeEdit();
+                }
+                else
+                {
+                    MessageBox.Show("修改失败，请确认是否房间名重名");
+                    txtID.Focus();
+                }
             }
         }
 
 
+        /// <summary>
+        /// 删除事件
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void tsbDelete_Click(object sender, EventArgs e)
+        {
+            string id = dgvRoomInfo.SelectedRows[0].Cells[1].Value.ToString();
+            DialogResult r = MessageBox.Show("确定是否要删除" + id + "房间", "操作提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (r == DialogResult.Yes)
+            {
+                if (roomComm.JudgeRoom(id))
+                {
+                    MessageBox.Show("有" + id + "房间相关的订单，要删除" + id + "房间，请先删除该房间相关的订单！", "操作提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    if (roomComm.DeleteRoom(id))
+                    {
+                        MessageBox.Show("删除成功");
+                        InitilizeEdit();
+                    }
+                    else
+                    {
+                        MessageBox.Show("删除失败");
+                    }
+                }
+            }
+        }
     }
 }

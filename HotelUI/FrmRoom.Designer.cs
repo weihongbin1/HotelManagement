@@ -276,6 +276,7 @@
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(69, 22);
             this.tsbDelete.Text = "删除(&D)";
+            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
             // tsbCancel
             // 
@@ -284,6 +285,7 @@
             this.tsbCancel.Name = "tsbCancel";
             this.tsbCancel.Size = new System.Drawing.Size(68, 22);
             this.tsbCancel.Text = "取消(&C)";
+            this.tsbCancel.Click += new System.EventHandler(this.tsbCancel_Click);
             // 
             // tsbExit
             // 
@@ -292,6 +294,7 @@
             this.tsbExit.Name = "tsbExit";
             this.tsbExit.Size = new System.Drawing.Size(67, 22);
             this.tsbExit.Text = "退出(&E)";
+            this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
             // 
             // dgvRoomInfo
             // 

@@ -77,7 +77,7 @@ namespace Hotel.DAL
         /// <summary>
         /// 增加房间信息
         /// </summary>
-        /// <param name="room">房间信息</param>
+        /// <param name="room">房间对象</param>
         /// <returns>是否增加成功</returns>
         public bool AddRoom(Room room)
         {
@@ -100,7 +100,75 @@ namespace Hotel.DAL
                     return false;
                 }
             }
-           
+        }
+
+        /// <summary>
+        /// 修改房间信息
+        /// </summary>
+        /// <param name="room">房间对象</param>
+        /// <param name="id">要修改的id</param>
+        /// <returns>是否修改成功</returns>
+        public bool UpdateRoom(Room room, string id) {
+            string sql = string.Format(@"SELECT count(*)
+                FROM Room
+                WHERE RoomId !='{0}' and RoomId='{1}'",id,room.RoomId);
+            if (Convert.ToInt32(DBHerper.Scalar(sql)) != 0)
+            {
+                return false;
+            }
+            else
+            {
+                sql = string.Format(@"UPDATE Room
+                    SET RoomId='{0}',RoomTypeId='{1}',RoomStateId='{2}'
+                    WHERE RoomId='{3}'", room.RoomId, room.RoomTypeId, room.RoomStateId,id);
+                if (Convert.ToInt32(DBHerper.NonQuery(sql)) == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        
+        /// <summary>
+        /// 判断该房间是有有未结账的订单
+        /// </summary>
+        /// <param name="id">房间ID</param>
+        /// <returns>是否有</returns>
+        public bool JudgeRoom(string id)
+        {
+            string sql = string.Format(@"SELECT count(*)
+                FROM GuestRecord
+                WHERE RoomId='{0}'",id);
+            if (Convert.ToInt32(DBHerper.Scalar(sql))!=0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 删除房间
+        /// </summary>
+        /// <param name="id">房间ID</param>
+        /// <returns>是否删除成功</returns>
+        public bool DeleteRoom(string id)
+        {
+            string sql = string.Format(@"DELETE Room
+                WHERE RoomId='{0}'",id);
+            if (Convert.ToInt32(DBHerper.NonQuery(sql))!=0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }
