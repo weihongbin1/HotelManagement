@@ -53,7 +53,7 @@ namespace Hotel.UI
         private void FrmRoom_Load(object sender, EventArgs e)
         {
             BindingType();
-            
+
             InitilizeEdit();
         }
 
@@ -83,12 +83,12 @@ namespace Hotel.UI
         /// </summary>
         private void BindingType()
         {
-           List<RoomTypeList> list= roomComm.GetTypeList();
+            List<RoomTypeList> list = roomComm.GetTypeList();
             cbxRoomType.DataSource = list;
             cbxRoomType.ValueMember = "TypeID";
             cbxRoomType.DisplayMember = "TypeName";
         }
-        
+
         /// <summary>
         /// 绑定全部房间信息
         /// </summary>
@@ -97,7 +97,7 @@ namespace Hotel.UI
             List<RoomTypeList> list = roomComm.GetRoomInfo();
             dgvRoomInfo.DataSource = list;
         }
-        
+
         /// <summary>
         /// 查询房间信息
         /// </summary>
@@ -138,11 +138,20 @@ namespace Hotel.UI
             }
             else
             {
-                string state;
-                if (rboCheck.Checked==true)
+                int state;
+                if (rboCheck.Checked == true)
                 {
-                    state = "1";
+                    state = 1;
                 }
+                else if (rboFree.Checked == true)
+                {
+                    state = 2;
+                }
+                else
+                {
+                    state = 3;
+                }
+                Room room = new Room() { RoomId = Convert.ToInt32(txtID.Text.Trim()), RoomStateId = state, RoomTypeId = Convert.ToInt32(cbxRoomType.SelectedValue) };
             }
         }
     }

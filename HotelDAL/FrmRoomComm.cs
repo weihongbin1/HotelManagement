@@ -44,7 +44,7 @@ namespace Hotel.DAL
             SqlDataReader r = DBHerper.Reader(sql);
             while (r.Read())
             {
-                RoomTypeList l = new RoomTypeList() { TypeID=r[0].ToString(), StateName=r[1].ToString(), TypeName=r[2].ToString() };
+                RoomTypeList l = new RoomTypeList() { TypeID = r[0].ToString(), StateName = r[1].ToString(), TypeName = r[2].ToString() };
                 list.Add(l);
             }
             r.Close();
@@ -62,7 +62,7 @@ namespace Hotel.DAL
             List<RoomTypeList> list = new List<RoomTypeList>();
             string sql = string.Format(@"SELECT RoomId,RoomStateName,TypeName+CASE  WHEN TypeWindow=0 THEN ' | 无窗' WHEN TypeWindow=1 THEN ' | 有窗' END
                 FROM RoomType AS T,Room AS R,RoomState AS S
-                WHERE (R.RoomTypeId=T.TypeId AND R.RoomStateId=S.RoomStateId) AND RoomId LIKE '%{0}%'",id);
+                WHERE (R.RoomTypeId=T.TypeId AND R.RoomStateId=S.RoomStateId) AND RoomId LIKE '%{0}%'", id);
             SqlDataReader r = DBHerper.Reader(sql);
             while (r.Read())
             {
@@ -72,6 +72,35 @@ namespace Hotel.DAL
             r.Close();
 
             return list;
+        }
+
+        /// <summary>
+        /// 增加房间信息
+        /// </summary>
+        /// <param name="room">房间信息</param>
+        /// <returns>是否增加成功</returns>
+        public bool AddRoom(Room room)
+        {
+            string sql = string.Format(@"SELECT count(*)
+                FROM Room
+                WHERE RoomId='{0}'",room.RoomId);
+            if (Convert.ToInt32( DBHerper.Scalar(sql))!=0)
+            {
+                return false;
+            }
+            else
+            {
+                sql = string.Format(@"INSERT Room VALUES ('{0}','{1}','{2}')",room.RoomId, room.RoomTypeId, room.RoomStateId);
+                if (Convert.ToInt32( DBHerper.NonQuery(sql))==1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+           
         }
 
     }
