@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBHerper.cs" />
+    <Compile Include="FrmFoodsComm.cs" />
     <Compile Include="FrmLoginComm.cs" />
     <Compile Include="FrmMainComm.cs" />
     <Compile Include="FrmRoomComm.cs" />

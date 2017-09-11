@@ -25,6 +25,7 @@ namespace Hotel.UI
         /// 需要修改的房间编号
         /// </summary>
         private string updateId;
+
         /// <summary>
         /// 构造方法
         /// </summary>

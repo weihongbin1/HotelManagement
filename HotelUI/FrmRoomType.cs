@@ -17,6 +17,7 @@ namespace Hotel.UI
         /// 实例化类型命令对象
         /// </summary>
         FrmRoomTypeComm typeComm = new FrmRoomTypeComm();
+
         /// <summary>
         /// 构造方法
         /// </summary>
@@ -357,6 +358,7 @@ namespace Hotel.UI
             }
 
         }
-       
+
+      
     }
 }
