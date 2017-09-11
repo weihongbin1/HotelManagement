@@ -24,8 +24,8 @@ namespace Hotel.UI.Single
         /// <summary>
         /// 房间ID
         /// </summary>
-        public string id="4101";
-        
+        public string id;
+
         /// <summary>
         /// 构造方法
         /// </summary>
@@ -86,17 +86,58 @@ namespace Hotel.UI.Single
         /// <param name="stateId">状态ID</param>
         private void BindingState(int stateId)
         {
-            if (stateId==1)
+            if (stateId == 1)
             {
                 rboCheck.Checked = true;
             }
-            else if (stateId==2)
+            else if (stateId == 2)
             {
                 rboFree.Checked = true;
             }
             else
             {
                 rboRepair.Checked = true;
+            }
+        }
+
+        /// <summary>
+        /// 修改事件
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateInfo();
+        }
+
+        /// <summary>
+        /// 修改房间信息
+        /// </summary>
+        private void UpdateInfo()
+        {
+            int typeId = Convert.ToInt32(cmbType.SelectedValue);
+            int state;
+            if (rboCheck.Checked==true)
+            {
+                state = 1;
+            }
+            else if (rboFree.Checked==true)
+            {
+                state = 2;
+            }
+            else
+            {
+                state = 3;
+            }
+            Room r = new Room() { RoomId = Convert.ToInt32(this.id), RoomStateId= state, RoomTypeId= typeId };
+            if (roomType.UpdateRoomInfo(r))
+            {
+                MessageBox.Show("修改成功");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("修改失败");
             }
         }
     }

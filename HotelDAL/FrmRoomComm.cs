@@ -193,5 +193,25 @@ namespace Hotel.DAL
             return room;
         }
 
+       /// <summary>
+       /// 修改房间信息
+       /// </summary>
+       /// <param name="room">房间信息对象</param>
+       /// <returns>是否修改成功</returns>
+        public bool UpdateRoomInfo(Room room)
+        {
+            string sql = string.Format(@"UPDATE [dbo].[Room]
+                SET [RoomTypeId]='{0}', [RoomStateId]='{1}'
+                WHERE [RoomId]='{2}'",room.RoomTypeId,room.RoomStateId,room.RoomId);
+            if (DBHerper.NonQuery(sql)==1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

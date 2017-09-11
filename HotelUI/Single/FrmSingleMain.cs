@@ -15,7 +15,7 @@ namespace Hotel.UI.Single
         /// <summary>
         /// 房间ID
         /// </summary>
-        public string RoomId;
+        public string RoomId = "2133";
         /// <summary>
         /// 构造 方法
         /// </summary>
