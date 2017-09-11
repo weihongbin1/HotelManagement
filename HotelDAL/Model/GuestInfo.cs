@@ -14,7 +14,7 @@ namespace Hotel.DAL
         /// <summary>
         /// 客户ID
         /// </summary>
-        public int ID { get; set; }
+        public int GuestID { get; set; }
         /// <summary>
         /// 客户姓名
         /// </summary>

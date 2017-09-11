@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace Hotel.UI
         public FrmGuestInfo()
         {
             InitializeComponent();
+        }
+
+        private void FrmGuestInfo_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -9,16 +9,12 @@ namespace Hotel.DAL
     /// <summary>
     /// 客人记录表
     /// </summary>
-    public class GuestRecord
+    public class GuestRecord : GuestInfo
     {
         /// <summary>
         /// 记录ID
         /// </summary>
         public int ID { get; set; }
-        /// <summary>
-        /// 客户编号
-        /// </summary>
-        public int GuestID { get; set; }
         /// <summary>
         /// 押金
         /// </summary>
@@ -43,6 +39,6 @@ namespace Hotel.DAL
         /// 客房编号
         /// </summary>
         public int RoomId { get; set; }
-       
+
     }
 }
