@@ -23,9 +23,26 @@ namespace Hotel.UI.Single
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// 窗体加载事件
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
         private void FrmSingleMain_Load(object sender, EventArgs e)
         {
             this.Text = RoomId + "房间";
+        }
+
+        /// <summary>
+        /// 单击状态类型
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void pbxRoom_Click(object sender, EventArgs e)
+        {
+            FrmRoom frmRoom = new FrmRoom() { id=this.RoomId};
+            frmRoom.ShowDialog();
         }
     }
 }

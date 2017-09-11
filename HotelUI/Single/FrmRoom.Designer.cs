@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRoom));
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbType = new System.Windows.Forms.ComboBox();
             this.rboRepair = new System.Windows.Forms.RadioButton();
             this.rboFree = new System.Windows.Forms.RadioButton();
             this.rboCheck = new System.Windows.Forms.RadioButton();
@@ -48,14 +48,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "房间类型：";
             // 
-            // comboBox1
+            // cmbType
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(96, 25);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(145, 20);
-            this.comboBox1.TabIndex = 1;
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Location = new System.Drawing.Point(96, 25);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(145, 20);
+            this.cmbType.TabIndex = 1;
             // 
             // rboRepair
             // 
@@ -128,7 +128,7 @@
             this.Controls.Add(this.rboFree);
             this.Controls.Add(this.rboCheck);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbType);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -136,6 +136,7 @@
             this.Name = "FrmRoom";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "房间管理";
+            this.Load += new System.EventHandler(this.FrmRoom_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,7 +145,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbType;
         private System.Windows.Forms.RadioButton rboRepair;
         private System.Windows.Forms.RadioButton rboFree;
         private System.Windows.Forms.RadioButton rboCheck;

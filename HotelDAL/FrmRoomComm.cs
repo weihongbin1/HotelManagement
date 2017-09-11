@@ -83,15 +83,15 @@ namespace Hotel.DAL
         {
             string sql = string.Format(@"SELECT count(*)
                 FROM Room
-                WHERE RoomId='{0}'",room.RoomId);
-            if (Convert.ToInt32( DBHerper.Scalar(sql))!=0)
+                WHERE RoomId='{0}'", room.RoomId);
+            if (Convert.ToInt32(DBHerper.Scalar(sql)) != 0)
             {
                 return false;
             }
             else
             {
-                sql = string.Format(@"INSERT Room VALUES ('{0}','{1}','{2}')",room.RoomId, room.RoomTypeId, room.RoomStateId);
-                if (Convert.ToInt32( DBHerper.NonQuery(sql))==1)
+                sql = string.Format(@"INSERT Room VALUES ('{0}','{1}','{2}')", room.RoomId, room.RoomTypeId, room.RoomStateId);
+                if (Convert.ToInt32(DBHerper.NonQuery(sql)) == 1)
                 {
                     return true;
                 }
@@ -108,10 +108,11 @@ namespace Hotel.DAL
         /// <param name="room">房间对象</param>
         /// <param name="id">要修改的id</param>
         /// <returns>是否修改成功</returns>
-        public bool UpdateRoom(Room room, string id) {
+        public bool UpdateRoom(Room room, string id)
+        {
             string sql = string.Format(@"SELECT count(*)
                 FROM Room
-                WHERE RoomId !='{0}' and RoomId='{1}'",id,room.RoomId);
+                WHERE RoomId !='{0}' and RoomId='{1}'", id, room.RoomId);
             if (Convert.ToInt32(DBHerper.Scalar(sql)) != 0)
             {
                 return false;
@@ -120,7 +121,7 @@ namespace Hotel.DAL
             {
                 sql = string.Format(@"UPDATE Room
                     SET RoomId='{0}',RoomTypeId='{1}',RoomStateId='{2}'
-                    WHERE RoomId='{3}'", room.RoomId, room.RoomTypeId, room.RoomStateId,id);
+                    WHERE RoomId='{3}'", room.RoomId, room.RoomTypeId, room.RoomStateId, id);
                 if (Convert.ToInt32(DBHerper.NonQuery(sql)) == 1)
                 {
                     return true;
@@ -131,7 +132,7 @@ namespace Hotel.DAL
                 }
             }
         }
-        
+
         /// <summary>
         /// 判断该房间是有有未结账的订单
         /// </summary>
@@ -141,8 +142,8 @@ namespace Hotel.DAL
         {
             string sql = string.Format(@"SELECT count(*)
                 FROM GuestRecord
-                WHERE RoomId='{0}'",id);
-            if (Convert.ToInt32(DBHerper.Scalar(sql))!=0)
+                WHERE RoomId='{0}'", id);
+            if (Convert.ToInt32(DBHerper.Scalar(sql)) != 0)
             {
                 return true;
             }
@@ -160,8 +161,8 @@ namespace Hotel.DAL
         public bool DeleteRoom(string id)
         {
             string sql = string.Format(@"DELETE Room
-                WHERE RoomId='{0}'",id);
-            if (Convert.ToInt32(DBHerper.NonQuery(sql))!=0)
+                WHERE RoomId='{0}'", id);
+            if (Convert.ToInt32(DBHerper.NonQuery(sql)) != 0)
             {
                 return true;
             }
@@ -169,6 +170,21 @@ namespace Hotel.DAL
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// 通过房间ID查询房间类型ID
+        /// </summary>
+        /// <param name="roomId">房间ID</param>
+        /// <returns>房间类型ID</returns>
+        public string GetRoomTypeId(string roomId)
+        {
+            string typeId = string.Empty;
+            string sql = string.Format(@"SELECT [RoomTypeId]
+                FROM [dbo].[Room]
+                WHERE [RoomId]='{0}'", roomId);
+            typeId = DBHerper.Scalar(sql).ToString();
+            return typeId;
         }
 
     }
