@@ -176,15 +176,21 @@ namespace Hotel.DAL
         /// 通过房间ID查询房间类型ID
         /// </summary>
         /// <param name="roomId">房间ID</param>
-        /// <returns>房间类型ID</returns>
-        public string GetRoomTypeId(string roomId)
+        /// <returns>房间信息对象</returns>
+        public RoomInfo GetRoomTypeId(string roomId)
         {
-            string typeId = string.Empty;
-            string sql = string.Format(@"SELECT [RoomTypeId]
+            RoomInfo room = new RoomInfo(); 
+            string sql = string.Format(@"SELECT [RoomTypeId],[RoomStateId]
                 FROM [dbo].[Room]
                 WHERE [RoomId]='{0}'", roomId);
-            typeId = DBHerper.Scalar(sql).ToString();
-            return typeId;
+            SqlDataReader r= DBHerper.Reader(sql);
+            if (r.Read())
+            {
+                room.RoomRype = r[0].ToString();
+                room.RoomState = r[1].ToString();
+            }
+            r.Close();
+            return room;
         }
 
     }

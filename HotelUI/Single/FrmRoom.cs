@@ -16,11 +16,15 @@ namespace Hotel.UI.Single
     /// </summary>
     public partial class FrmRoom : Form
     {
+        /// <summary>
+        /// 实例化类
+        /// </summary>
         FrmRoomComm roomType = new FrmRoomComm();
+
         /// <summary>
         /// 房间ID
         /// </summary>
-        public string id;
+        public string id="4101";
         
         /// <summary>
         /// 构造方法
@@ -47,8 +51,10 @@ namespace Hotel.UI.Single
         /// <param name="e">e</param>
         private void FrmRoom_Load(object sender, EventArgs e)
         {
-            int index = BindingType(roomType.GetRoomTypeId(id));
+            RoomInfo room = roomType.GetRoomTypeId(id);
+            int index = BindingType(room.RoomRype);
             cmbType.SelectedIndex = index;
+            BindingState(Convert.ToInt32(room.RoomState));
         }
 
         /// <summary>
@@ -72,6 +78,26 @@ namespace Hotel.UI.Single
                 }
             }
             return index;
+        }
+
+        /// <summary>
+        /// 绑定房间状态
+        /// </summary>
+        /// <param name="stateId">状态ID</param>
+        private void BindingState(int stateId)
+        {
+            if (stateId==1)
+            {
+                rboCheck.Checked = true;
+            }
+            else if (stateId==2)
+            {
+                rboFree.Checked = true;
+            }
+            else
+            {
+                rboRepair.Checked = true;
+            }
         }
     }
 }
