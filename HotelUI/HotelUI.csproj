@@ -43,8 +43,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>bin\Debug\HotelUI.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -150,6 +149,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="Single\FrmRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Single\FrmRoom.Designer.cs">
+      <DependentUpon>FrmRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Single\FrmSingleMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Single\FrmSingleMain.Designer.cs">
+      <DependentUpon>FrmSingleMain.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +189,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Single\FrmRoom.resx">
+      <DependentUpon>FrmRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Single\FrmSingleMain.resx">
+      <DependentUpon>FrmSingleMain.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />

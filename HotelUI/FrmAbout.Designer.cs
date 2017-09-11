@@ -1,5 +1,8 @@
 ﻿namespace Hotel.UI
 {
+    /// <summary>
+    /// 关于
+    /// </summary>
     partial class FrmAbout
     {
         /// <summary>

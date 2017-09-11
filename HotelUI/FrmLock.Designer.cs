@@ -1,5 +1,8 @@
 ﻿namespace Hotel.UI
 {
+    /// <summary>
+    /// 锁定程序
+    /// </summary>
     partial class FrmLock
     {
         /// <summary>
@@ -93,7 +96,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLock";
-            this.Load += new System.EventHandler(this.FrmLock_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLock_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

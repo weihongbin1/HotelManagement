@@ -17,15 +17,14 @@ namespace Hotel.UI
         /// 管理员ID
         /// </summary>
         public string id;
+        /// <summary>
+        /// 构造方法
+        /// </summary>
         public FrmLock()
         {
             InitializeComponent();
         }
 
-        private void FrmLock_Load(object sender, EventArgs e)
-        {
-            
-        }
 
         /// <summary>
         /// 钥匙单击事件

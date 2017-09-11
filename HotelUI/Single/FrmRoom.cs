@@ -8,27 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Hotel.UI
+namespace Hotel.UI.Single
 {
-    public partial class FrmAbout : Form
+    /// <summary>
+    /// 指定房间修改
+    /// </summary>
+    public partial class FrmRoom : Form
     {
         /// <summary>
         /// 构造方法
         /// </summary>
-        public FrmAbout()
+        public FrmRoom()
         {
             InitializeComponent();
         }
 
-        private int i = 0;
-        private void timer1_Tick(object sender, EventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = iltAbout.Images[i];
-            i++;
-            if (i==11)
-            {
-                i = 0;
-            }
+            this.Close();
         }
     }
 }

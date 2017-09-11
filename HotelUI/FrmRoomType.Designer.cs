@@ -1,5 +1,8 @@
 ﻿namespace Hotel.UI
 {
+    /// <summary>
+    /// 房间类型管理
+    /// </summary>
     partial class FrmRoomType
     {
         /// <summary>

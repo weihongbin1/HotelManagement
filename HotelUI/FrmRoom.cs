@@ -11,6 +11,9 @@ using Hotel.DAL;
 
 namespace Hotel.UI
 {
+    /// <summary>
+    /// 房间管理
+    /// </summary>
     public partial class FrmRoom : Form
     {
         /// <summary>
@@ -22,6 +25,9 @@ namespace Hotel.UI
         /// 需要修改的房间编号
         /// </summary>
         private string updateId;
+        /// <summary>
+        /// 构造方法
+        /// </summary>
         public FrmRoom()
         {
             InitializeComponent();

@@ -8,20 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Hotel.DAL;
+using Hotel.UI.Single;
 
 namespace Hotel.UI
 {
     public partial class FrmMain : Form
     {
+        /// <summary>
+        /// 实例化房间统计对象
+        /// </summary>
         RoomStatistics statistics = new RoomStatistics();
+
         /// <summary>
         /// 实例化执行命令对象
         /// </summary>
         FrmMainComm mainComm = new FrmMainComm();
+
         /// <summary>
         /// 登录用户名
         /// </summary>
         public string Admin = "Admin";
+
         /// <summary>
         /// 主窗体构造方法
         /// </summary>
@@ -41,8 +48,6 @@ namespace Hotel.UI
             tsbLogOn.Text = "登录时间：" + DateTime.Now.ToLongDateString().ToString() + DateTime.Now.ToLongTimeString().ToString();
             RenovateInfo();
         }
-
-        
 
         #region 右击菜单事件
 
@@ -156,7 +161,6 @@ namespace Hotel.UI
         {
             Application.Exit();
         }
-       
 
         /// <summary>
         /// 房间信息单击事件
@@ -165,8 +169,11 @@ namespace Hotel.UI
         /// <param name="e">e</param>
         private void lvwRoomInfo_Click(object sender, EventArgs e)
         {
-
-            MessageBox.Show(lvwRoomInfo.SelectedItems[0].Text);
+            FrmSingleMain frmSingle = new FrmSingleMain();
+            frmSingle.RoomId = lvwRoomInfo.SelectedItems[0].Text;
+            frmSingle.ShowDialog();
+            RenovateInfo();
+            //MessageBox.Show(lvwRoomInfo.SelectedItems[0].Text);
         }
 
         /// <summary>
@@ -271,13 +278,13 @@ namespace Hotel.UI
                 lvwRoomInfo.Items.Add(item);
                 statistics.RoomNum++;
             }
-            
+
 
         }
 
-       /// <summary>
-       /// 填充房间统计
-       /// </summary>
+        /// <summary>
+        /// 填充房间统计
+        /// </summary>
         private void FillStatistics()
         {
             txtType.Text = statistics.Type;
@@ -285,7 +292,7 @@ namespace Hotel.UI
             txtCheck.Text = statistics.Check.ToString();
             txtFree.Text = statistics.Free.ToString();
             txtRepair.Text = statistics.Repair.ToString();
-            txtCheckRate.Text = ((statistics.Check * 1.0 / statistics.RoomNum) * 100).ToString("0.00")+"%";
+            txtCheckRate.Text = ((statistics.Check * 1.0 / statistics.RoomNum) * 100).ToString("0.00") + "%";
         }
 
         /// <summary>
@@ -293,12 +300,12 @@ namespace Hotel.UI
         /// </summary>
         private void RenovateInfo()
         {
-            if (lvwRoomInfo.Items!=null)
+            if (lvwRoomInfo.Items != null)
             {
                 lvwRoomInfo.Items.Clear();
             }
             ShowRoomInfo();
-            if (tvwRoomType.Nodes!=null)
+            if (tvwRoomType.Nodes != null)
             {
                 tvwRoomType.Nodes.Clear();
             }
@@ -342,6 +349,18 @@ namespace Hotel.UI
             RenovateInfo();
 
 
+        }
+
+        /// <summary>
+        /// 房间管理事件
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void tsbRoom_Click(object sender, EventArgs e)
+        {
+            FrmRoom frmRoom = new FrmRoom();
+            frmRoom.ShowDialog();
+            RenovateInfo();
         }
     }
 }
