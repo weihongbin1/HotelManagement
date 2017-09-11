@@ -634,6 +634,7 @@
             this.tsbFoods.Size = new System.Drawing.Size(60, 99);
             this.tsbFoods.Text = "餐饮维护";
             this.tsbFoods.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbFoods.Click += new System.EventHandler(this.tsbFoods_Click);
             // 
             // tsbStatistics
             // 

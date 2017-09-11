@@ -362,5 +362,16 @@ namespace Hotel.UI
             frmRoom.ShowDialog();
             RenovateInfo();
         }
+
+        /// <summary>
+        /// 餐饮管理事件
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void tsbFoods_Click(object sender, EventArgs e)
+        {
+            FrmFoods foods = new FrmFoods();
+            foods.ShowDialog();
+        }
     }
 }
