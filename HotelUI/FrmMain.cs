@@ -373,5 +373,11 @@ namespace Hotel.UI
             FrmFoods foods = new FrmFoods();
             foods.ShowDialog();
         }
+
+        private void tsbQuery_Click(object sender, EventArgs e)
+        {
+            FrmGuestInfo guestInfo = new FrmGuestInfo();
+            guestInfo.ShowDialog();
+        }
     }
 }

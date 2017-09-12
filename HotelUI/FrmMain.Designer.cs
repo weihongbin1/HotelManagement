@@ -668,6 +668,7 @@
             this.tsbQuery.Size = new System.Drawing.Size(60, 99);
             this.tsbQuery.Text = "顾客查询";
             this.tsbQuery.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbQuery.Click += new System.EventHandler(this.tsbQuery_Click);
             // 
             // tsbLock
             // 

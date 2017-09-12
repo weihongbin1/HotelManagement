@@ -100,7 +100,6 @@ namespace Hotel.UI
         private void FrmRoom_Load(object sender, EventArgs e)
         {
             BindingType();
-
             InitilizeEdit();
         }
 

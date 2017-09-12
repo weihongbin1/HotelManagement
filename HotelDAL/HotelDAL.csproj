@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckOutInfo.cs" />
     <Compile Include="DBHerper.cs" />
     <Compile Include="FrmFoodsComm.cs" />
+    <Compile Include="FrmGuestInfoComm.cs" />
     <Compile Include="FrmLoginComm.cs" />
     <Compile Include="FrmMainComm.cs" />
     <Compile Include="FrmRoomComm.cs" />

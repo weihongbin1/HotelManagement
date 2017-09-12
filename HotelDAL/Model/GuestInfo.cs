@@ -31,5 +31,9 @@ namespace Hotel.DAL
         /// 性别
         /// </summary>
         public bool Sex { get; set; }
+        /// <summary>
+        /// 性别（String类型）
+        /// </summary>
+        public string SexStr { get; set; }
     }
 }
