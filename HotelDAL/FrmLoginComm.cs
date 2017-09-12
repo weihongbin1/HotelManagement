@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,11 @@ namespace Hotel.DAL
         /// <returns>是否正确</returns>
         public bool Check(Admin admin)
         {
+            Encrypt encrypt = new Encrypt();
+            string pwd = encrypt.EncryotPwd(admin.Pwd);
             string sql = string.Format(@"SELECT COUNT(*)
                 FROM [dbo].[Admin]
-                WHERE [Admins]='{0}' AND [Pwd]='{1}'", admin.Admins, admin.Pwd);
+                WHERE [Admins]='{0}' AND [Pwd]='{1}'", admin.Admins, pwd);
             try
             {
                 int judge = Convert.ToInt32(DBHerper.Scalar(sql));
@@ -41,17 +44,19 @@ namespace Hotel.DAL
             }
 
         }
+
         /// <summary>
         /// 修改密码
         /// </summary>
         /// <param name="admin">管理员对象</param>
         /// <returns>修改是否成功</returns>
-
         public bool UpadtePwd(Admin admin)
         {
+            Encrypt encrypt = new Encrypt();
+            string pwd = encrypt.EncryotPwd(admin.Pwd);
             string sql = string.Format(@"UPDATE [dbo].[Admin]
                 SET [Pwd]='{0}'
-                WHERE [Admins]='{1}'", admin.Pwd, admin.Admins);
+                WHERE [Admins]='{1}'", pwd, admin.Admins);
             try
             {
                 int judge = DBHerper.NonQuery(sql);

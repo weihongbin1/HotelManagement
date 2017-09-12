@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Hotel.DAL;
+using Hotel.BLL;
 
 namespace Hotel.UI
 {
@@ -30,6 +31,11 @@ namespace Hotel.UI
         {
             this.AcceptButton = btnModify;
         }
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModify_Click(object sender, EventArgs e)
         {
             ModifyPwd();
@@ -98,18 +104,12 @@ namespace Hotel.UI
         {
             if (NonEmpty())
             {
-                //初始化对象
-                Admin admin = new Admin() { Admins=this.id, Pwd =txtOldPwd.Text.Trim()};
-                //实例化
+                Admin admin = new Admin() { Admins = this.id, Pwd = txtOldPwd.Text.Trim() };
                 FrmLoginComm loginComm = new FrmLoginComm();
-                //判断原密码是否正确
                 if (loginComm.Check(admin))
                 {
-                    //初始化对象
-                    admin = new Admin() {Admins =this.id, Pwd =txtPwd.Text.Trim() };
-                   //实例化
+                    admin = new Admin() { Admins = this.id, Pwd = txtPwd.Text.Trim() };
                     FrmLoginComm frmLoginComm = new FrmLoginComm();
-                    //修改密码
                     if (frmLoginComm.UpadtePwd(admin))
                     {
                         MessageBox.Show("修改成功");
@@ -129,22 +129,51 @@ namespace Hotel.UI
             }
         }
 
-        private void txtNewPwd_TextChanged(object sender, EventArgs e)
-        {
-            //if (NonEmpty())
-            //{
-            //    this.AcceptButton = this.btnModify;
-            //}
-            //else
-            //{
-            //    this.AcceptButton = null;
-            //}
-           
-        }
 
+        /// <summary>
+        /// 返回
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
         private void btnReturn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked==true)
+            {
+                txtOldPwd.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtOldPwd.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked == true)
+            {
+                txtPwd .UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPwd.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked == true)
+            {
+                txtNewPwd.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtNewPwd.UseSystemPasswordChar = true;
+            }
         }
     }
 }

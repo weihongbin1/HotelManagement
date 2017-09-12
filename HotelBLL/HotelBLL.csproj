@@ -46,11 +46,5 @@
     <Compile Include="Tool\MD5.cs" />
     <Compile Include="Tool\SHA.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HotelDAL\HotelDAL.csproj">
-      <Project>{2391dbfe-5ddc-4466-a496-1c8e2bab5588}</Project>
-      <Name>HotelDAL</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

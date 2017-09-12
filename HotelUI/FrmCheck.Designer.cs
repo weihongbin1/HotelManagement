@@ -32,6 +32,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rboFeMale = new System.Windows.Forms.RadioButton();
+            this.rboMale = new System.Windows.Forms.RadioButton();
+            this.btnClear = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.dtpArrivalDate = new System.Windows.Forms.DateTimePicker();
             this.cbxType = new System.Windows.Forms.ComboBox();
@@ -41,17 +44,14 @@
             this.txtNum = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblRoomType = new System.Windows.Forms.Label();
             this.lblMoney = new System.Windows.Forms.Label();
-            this.lblFangJian = new System.Windows.Forms.Label();
+            this.lblRoomId = new System.Windows.Forms.Label();
             this.labSex = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblHM = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.rboMale = new System.Windows.Forms.RadioButton();
-            this.rboFeMale = new System.Windows.Forms.RadioButton();
-            this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,9 +69,9 @@
             this.groupBox1.Controls.Add(this.txtNum);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblRoomType);
             this.groupBox1.Controls.Add(this.lblMoney);
-            this.groupBox1.Controls.Add(this.lblFangJian);
+            this.groupBox1.Controls.Add(this.lblRoomId);
             this.groupBox1.Controls.Add(this.labSex);
             this.groupBox1.Controls.Add(this.lblTime);
             this.groupBox1.Controls.Add(this.lblPhone);
@@ -83,6 +83,40 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "登记顾客信息";
+            // 
+            // rboFeMale
+            // 
+            this.rboFeMale.AutoSize = true;
+            this.rboFeMale.Location = new System.Drawing.Point(442, 37);
+            this.rboFeMale.Name = "rboFeMale";
+            this.rboFeMale.Size = new System.Drawing.Size(35, 16);
+            this.rboFeMale.TabIndex = 8;
+            this.rboFeMale.Text = "女";
+            this.rboFeMale.UseVisualStyleBackColor = true;
+            // 
+            // rboMale
+            // 
+            this.rboMale.AutoSize = true;
+            this.rboMale.Checked = true;
+            this.rboMale.Location = new System.Drawing.Point(383, 37);
+            this.rboMale.Name = "rboMale";
+            this.rboMale.Size = new System.Drawing.Size(35, 16);
+            this.rboMale.TabIndex = 8;
+            this.rboMale.TabStop = true;
+            this.rboMale.Text = "男";
+            this.rboMale.UseVisualStyleBackColor = true;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Image = global::Hotel.UI.Properties.Resources.取消;
+            this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClear.Location = new System.Drawing.Point(456, 200);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 7;
+            this.btnClear.Text = "清空";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnRegister
             // 
@@ -160,14 +194,14 @@
             this.txtName.Size = new System.Drawing.Size(164, 21);
             this.txtName.TabIndex = 0;
             // 
-            // label1
+            // lblRoomType
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(303, 80);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "房间类型";
+            this.lblRoomType.AutoSize = true;
+            this.lblRoomType.Location = new System.Drawing.Point(303, 80);
+            this.lblRoomType.Name = "lblRoomType";
+            this.lblRoomType.Size = new System.Drawing.Size(53, 12);
+            this.lblRoomType.TabIndex = 0;
+            this.lblRoomType.Text = "房间类型";
             // 
             // lblMoney
             // 
@@ -178,14 +212,14 @@
             this.lblMoney.TabIndex = 0;
             this.lblMoney.Text = "押金";
             // 
-            // lblFangJian
+            // lblRoomId
             // 
-            this.lblFangJian.AutoSize = true;
-            this.lblFangJian.Location = new System.Drawing.Point(327, 121);
-            this.lblFangJian.Name = "lblFangJian";
-            this.lblFangJian.Size = new System.Drawing.Size(29, 12);
-            this.lblFangJian.TabIndex = 0;
-            this.lblFangJian.Text = "房间";
+            this.lblRoomId.AutoSize = true;
+            this.lblRoomId.Location = new System.Drawing.Point(303, 121);
+            this.lblRoomId.Name = "lblRoomId";
+            this.lblRoomId.Size = new System.Drawing.Size(53, 12);
+            this.lblRoomId.TabIndex = 0;
+            this.lblRoomId.Text = "房间编号";
             // 
             // labSex
             // 
@@ -232,40 +266,6 @@
             this.lblName.TabIndex = 0;
             this.lblName.Text = "客户姓名";
             // 
-            // rboMale
-            // 
-            this.rboMale.AutoSize = true;
-            this.rboMale.Checked = true;
-            this.rboMale.Location = new System.Drawing.Point(383, 37);
-            this.rboMale.Name = "rboMale";
-            this.rboMale.Size = new System.Drawing.Size(35, 16);
-            this.rboMale.TabIndex = 8;
-            this.rboMale.TabStop = true;
-            this.rboMale.Text = "男";
-            this.rboMale.UseVisualStyleBackColor = true;
-            // 
-            // rboFeMale
-            // 
-            this.rboFeMale.AutoSize = true;
-            this.rboFeMale.Location = new System.Drawing.Point(442, 37);
-            this.rboFeMale.Name = "rboFeMale";
-            this.rboFeMale.Size = new System.Drawing.Size(35, 16);
-            this.rboFeMale.TabIndex = 8;
-            this.rboFeMale.Text = "女";
-            this.rboFeMale.UseVisualStyleBackColor = true;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Image = global::Hotel.UI.Properties.Resources.取消;
-            this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClear.Location = new System.Drawing.Point(456, 200);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 7;
-            this.btnClear.Text = "清空";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
             // FrmCheck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -297,14 +297,14 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblMoney;
-        private System.Windows.Forms.Label lblFangJian;
+        private System.Windows.Forms.Label lblRoomId;
         private System.Windows.Forms.Label labSex;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.Label lblHM;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.ComboBox cbxType;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblRoomType;
         private System.Windows.Forms.RadioButton rboFeMale;
         private System.Windows.Forms.RadioButton rboMale;
         private System.Windows.Forms.Button btnClear;

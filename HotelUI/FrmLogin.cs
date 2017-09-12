@@ -26,15 +26,26 @@ namespace Hotel.UI
 
         }
 
+        /// <summary>
+        /// 窗体加载事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmLogin_Load(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// 登录事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
             Login();
         }
+
         /// <summary>
         /// 非空判断以及输入是否合法
         /// </summary>
@@ -71,6 +82,7 @@ namespace Hotel.UI
             }
 
         }
+
         /// <summary>
         /// 登录
         /// </summary>
@@ -80,15 +92,14 @@ namespace Hotel.UI
             {
                 string name = txtUser.Text.Trim();
                 string pwd = txtPwd.Text.Trim();
-                //初始化对象
                 Admin admin = new Admin() { Admins = name, Pwd = pwd };
-                //实例化命令类
                 FrmLoginComm loginComm = new FrmLoginComm();
-                //检查用户名和密码是否正确
                 if (loginComm.Check(admin))
                 {
-                    //登录成功
-                    MessageBox.Show("登录成功");
+                    FrmMain main = new FrmMain() { Admin = txtUser.Text.Trim() };
+                    this.Hide();
+                    main.ShowDialog();
+                    this.Close();
                 }
                 else
                 {
@@ -98,5 +109,18 @@ namespace Hotel.UI
             }
         }
 
+        
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                txtPwd.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPwd.UseSystemPasswordChar = true;
+            }
+        }
     }
 }

@@ -224,7 +224,6 @@ namespace Hotel.UI
         {
             LoadOrder();
             LoadRecord();
-            MessageBox.Show(tabControl1.SelectedIndex.ToString());
             if (tabControl1.SelectedIndex==1)
             {
                 this.MaximizeBox = true;

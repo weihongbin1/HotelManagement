@@ -33,6 +33,26 @@ namespace Hotel.DAL
         }
 
         /// <summary>
+        /// 查询单条订单
+        /// </summary>
+        /// <param name="roomid">房间编号</param>
+        /// <returns>订单对象 </returns>
+        public GuestRecord SLoadOrder(string roomid)
+        {
+            GuestRecord record = null;
+            string sql = string.Format(@"SELECT [RoomId],[Name],[CardNo],[Phone],CASE WHEN [Sex]=0 THEN '男' WHEN [Sex]=1 THEN '女' END,[Deposit],[ArrivalDate],R.ID
+                FROM [dbo].[GuestInfo] G,[dbo].[GuestRecord] R
+                WHERE G.ID=R.GuestID AND [LeaveDate] IS  NULL and [RoomId]={0}", roomid);
+            SqlDataReader r = DBHerper.Reader(sql);
+            if (r.Read())
+            {
+                record = new GuestRecord() { RoomId = Convert.ToInt32(r[0]), Name = r[1].ToString(), CardNo = r[2].ToString(), Phone = r[3].ToString(), SexStr = r[4].ToString(), Deposit = Convert.ToDouble(r[5]), ArrivalDate = Convert.ToDateTime(r[6]), ID = Convert.ToInt32(r[7]) };
+            }
+            r.Close();
+            return record;
+        }
+
+        /// <summary>
         /// 筛选订单-按姓名筛选
         /// </summary>
         /// <param name="name">客户姓名</param>
@@ -118,7 +138,6 @@ namespace Hotel.DAL
         /// <param name="RoomTotal">房款</param>
         /// <param name="FoodTotal">消费</param>
         /// <param name="id">订单号</param>
-        /// <returns>是否退房成功</returns>
         public void CheckOut(string RoomTotal, string FoodTotal, string id)
         {
             string sql = string.Format(@"UPDATE [dbo].[GuestRecord]
@@ -128,6 +147,23 @@ namespace Hotel.DAL
                 SET [RoomStateId]=2
                 WHERE [RoomId]=
                 (SELECT [RoomId] FROM  [dbo].[GuestRecord] WHERE [ID]='{2}')", RoomTotal, FoodTotal, id);
+            DBHerper.NonQuery(sql);
+        }
+
+        /// <summary>
+        /// 单个退房
+        /// </summary>
+        /// <param name="RoomTotal">房款</param>
+        /// <param name="FoodTotal">消费</param>
+        /// <param name="id">房间号</param>
+        public void SCheckOut(string RoomTotal, string FoodTotal, string id)
+        {
+            string sql = string.Format(@"UPDATE [dbo].[GuestRecord]
+                SET [LeaveDate]=GETDATE(),[RoomTotal]='{0}',[FoodTotal]='{1}'
+                WHERE [RoomId]='{2}'
+                UPDATE [dbo].[Room]
+                SET [RoomStateId]=2
+                WHERE [RoomId]='{2}'", RoomTotal, FoodTotal, id);
             DBHerper.NonQuery(sql);
         }
 
@@ -166,7 +202,7 @@ namespace Hotel.DAL
             SqlDataReader r = DBHerper.Reader(sql);
             while (r.Read())
             {
-                GuestRecord g = new GuestRecord() { RoomId =Convert.ToInt32(r[0]), Name=r[1].ToString(), CardNo=r[2].ToString(), Phone=r[3].ToString(), SexStr=r[4].ToString(), Deposit=Convert.ToDouble(r[5]), ArrivalDate=Convert.ToDateTime(r[6]), LeaveDate=Convert.ToDateTime(r[7]), RoomTotal=Convert.ToDouble(r[8]),FoodTotal=Convert.ToDouble(r[9]), ID=Convert.ToInt32(r[10]) };
+                GuestRecord g = new GuestRecord() { RoomId = Convert.ToInt32(r[0]), Name = r[1].ToString(), CardNo = r[2].ToString(), Phone = r[3].ToString(), SexStr = r[4].ToString(), Deposit = Convert.ToDouble(r[5]), ArrivalDate = Convert.ToDateTime(r[6]), LeaveDate = Convert.ToDateTime(r[7]), RoomTotal = Convert.ToDouble(r[8]), FoodTotal = Convert.ToDouble(r[9]), ID = Convert.ToInt32(r[10]) };
                 list.Add(g);
             }
             r.Close();

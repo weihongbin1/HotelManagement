@@ -152,6 +152,7 @@
             this.pbxCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxCheck.TabIndex = 1;
             this.pbxCheck.TabStop = false;
+            this.pbxCheck.Click += new System.EventHandler(this.pbxCheck_Click);
             // 
             // panel4
             // 
@@ -185,6 +186,7 @@
             this.pbxSeeInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxSeeInfo.TabIndex = 1;
             this.pbxSeeInfo.TabStop = false;
+            this.pbxSeeInfo.Click += new System.EventHandler(this.pbxSeeInfo_Click);
             // 
             // FrmSingleMain
             // 

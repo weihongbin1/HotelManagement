@@ -52,6 +52,7 @@
     <Compile Include="FrmMainComm.cs" />
     <Compile Include="FrmRoomComm.cs" />
     <Compile Include="FrmRoomTypeComm.cs" />
+    <Compile Include="FrmSingleMainComm.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\FoodList.cs" />
     <Compile Include="Model\FoodOrder.cs" />
@@ -65,6 +66,11 @@
     <Compile Include="RoomStatistics.cs" />
     <Compile Include="RoomTypeList.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\HotelBLL\HotelBLL.csproj">
+      <Project>{8F8314A8-82DF-44E7-9D1C-91EC04714AF3}</Project>
+      <Name>HotelBLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

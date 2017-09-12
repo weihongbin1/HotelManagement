@@ -15,6 +15,12 @@ namespace Hotel.UI
 
     public partial class FrmCheck : Form
     {
+
+        /// <summary>
+        /// 房间编号
+        /// </summary>
+        public int roomId { get; set; }
+
         /// <summary>
         /// 输入提示--产量
         /// </summary>
@@ -61,6 +67,13 @@ namespace Hotel.UI
         /// </summary>
         private void FrmCheck_Load(object sender, EventArgs e)
         {
+            if (this.roomId!=0)
+            {
+                cbxRoom.Hide();
+                cbxType.Hide();
+                lblRoomId.Hide();
+                lblRoomType.Hide();
+            }
             BindingRoomType();
             cbxType_Click(sender, e);
             dtpArrivalDate.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
@@ -182,7 +195,10 @@ namespace Hotel.UI
                 {
                     sex = false;
                 }
-                int roomId = Convert.ToInt32(cbxRoom.Text.Trim());
+                if (roomId==0)
+                {
+                    roomId = Convert.ToInt32(cbxRoom.Text.Trim());
+                }
                 double money = Convert.ToDouble(txtMoney.Text.Trim());
                 GuestInfo info = new GuestInfo() { Name = name, CardNo = cardNo, Phone = phone, Sex = sex };
                 string guestId = string.Empty;

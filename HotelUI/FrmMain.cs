@@ -27,7 +27,7 @@ namespace Hotel.UI
         /// <summary>
         /// 登录用户名
         /// </summary>
-        public string Admin = "Admin";
+        public string Admin;
 
         /// <summary>
         /// 主窗体构造方法

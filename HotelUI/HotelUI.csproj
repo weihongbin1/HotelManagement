@@ -167,6 +167,12 @@
     <Compile Include="Single\FrmRoom.Designer.cs">
       <DependentUpon>FrmRoom.cs</DependentUpon>
     </Compile>
+    <Compile Include="Single\FrmSingleGuestInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Single\FrmSingleGuestInfo.Designer.cs">
+      <DependentUpon>FrmSingleGuestInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Single\FrmSingleMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Single\FrmRoom.resx">
       <DependentUpon>FrmRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Single\FrmSingleGuestInfo.resx">
+      <DependentUpon>FrmSingleGuestInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Single\FrmSingleMain.resx">
       <DependentUpon>FrmSingleMain.cs</DependentUpon>

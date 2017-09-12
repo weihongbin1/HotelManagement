@@ -32,6 +32,7 @@
             this.txtPwd = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtUser = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtPwd
@@ -70,6 +71,17 @@
             this.txtUser.Size = new System.Drawing.Size(231, 32);
             this.txtUser.TabIndex = 0;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("宋体", 16F);
+            this.checkBox1.Location = new System.Drawing.Point(926, 408);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // FrmLogin
             // 
             this.AcceptButton = this.btnLogin;
@@ -78,6 +90,7 @@
             this.BackgroundImage = global::Hotel.UI.Properties.Resources.login;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1115, 623);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.txtPwd);
@@ -98,6 +111,7 @@
         private System.Windows.Forms.TextBox txtPwd;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
