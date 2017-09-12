@@ -46,11 +46,77 @@ namespace Hotel.DAL
             SqlDataReader r = DBHerper.Reader(sql);
             while (r.Read())
             {
-                Room room = new Room() { RoomId=Convert.ToInt32(r["RoomId"]), TypePrice=Convert.ToDouble(r["TypePrice"]) };
+                Room room = new Room() { RoomId = Convert.ToInt32(r["RoomId"]), TypePrice = Convert.ToDouble(r["TypePrice"]) };
                 list.Add(room);
             }
             r.Close();
             return list;
         }
+
+        /// <summary>
+        /// 通过身份证判断客户是否存在
+        /// </summary>
+        /// <param name="id">身份证</param>
+        /// <returns>是否存在</returns>
+        public bool CheckExist(string id)
+        {
+            string sql = string.Format(@"SELECT COUNT(*)
+                FROM [dbo].[GuestInfo]
+                WHERE [CardNo]='{0}'", id);
+            int judge = Convert.ToInt32(DBHerper.Scalar(sql));
+            if (judge != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 增加客户信息
+        /// </summary>
+        /// <param name="info">客户信息</param>
+        /// <returns>客户编号</returns>
+        public string AddGuestInfo(GuestInfo info)
+        {
+            string sql = string.Format(@"INSERT [dbo].[GuestInfo]([Name], [CardNo], [Phone], [Sex])
+                VALUES ('{0}','{1}','{2}','{3}')
+                SELECT @@IDENTITY", info.Name, info.CardNo, info.Phone, info.Sex);
+            string guestId = DBHerper.Scalar(sql).ToString();
+            return guestId;
+        }
+
+        /// <summary>
+        /// 修改客户信息
+        /// </summary>
+        /// <param name="info">客户信息</param>
+        /// <returns>客户编号</returns>
+        public string UpdateGuestInfo(GuestInfo info)
+        {
+            string sql = string.Format(@"UPDATE [dbo].[GuestInfo]
+                SET [Name]='{0}',[Phone]='{1}',[Sex]='{2}'
+                WHERE [CardNo]='{3}'
+                SELECT [ID]
+                FROM [dbo].[GuestInfo]
+                WHERE [CardNo]='{3}'", info.Name, info.Phone, info.Sex, info.CardNo);
+            string guestId = DBHerper.Scalar(sql).ToString();
+            return guestId;
+        }
+
+        /// <summary>
+        /// 增加订单
+        /// </summary>
+        /// <param name="guest">客户记录对象</param>
+        public void AddOrder(GuestRecord guest)
+        {
+            string sql = string.Format(@"INSERT [dbo].[GuestRecord] ( [GuestID], [Deposit], [ArrivalDate], [RoomId])
+                VALUES ('{0}','{1}','{2}','{3}')
+                UPDATE [dbo].[Room]
+                SET [RoomStateId]=1
+                WHERE [RoomId]='{3}'", guest.GuestID,guest.Deposit,guest.ArrivalDateStr, guest.RoomId);
+            DBHerper.NonQuery(sql);
+        } 
     }
 }

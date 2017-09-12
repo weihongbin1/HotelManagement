@@ -16,6 +16,11 @@ namespace Hotel.UI
     public partial class FrmCheck : Form
     {
         /// <summary>
+        /// 输入提示--产量
+        /// </summary>
+        private const string Prompt = "输入提示";
+
+        /// <summary>
         /// 实例化入住登录命令
         /// </summary>
         FrmCheckComm checkComm = new FrmCheckComm();
@@ -24,6 +29,9 @@ namespace Hotel.UI
         /// 构造方法
         /// </summary>
         public FrmCheck()
+        {
+            InitializeComponent();
+        }
 
         #region 输入限制
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
@@ -39,6 +47,13 @@ namespace Hotel.UI
             if ((e.KeyChar <= 47 || e.KeyChar >= 58) && (e.KeyChar != 8) && (e.KeyChar != 46))
                 e.Handled = true;
         }
+
+        private void txtNum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //利用ASCII码处理办法、48代表0，57代表9，8代表空格，46代表小数点 ,88代表大写X,120代表小写x
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && (e.KeyChar != 8) && (e.KeyChar != 46) && (e.KeyChar != 88) && (e.KeyChar != 120))
+                e.Handled = true;
+        }
         #endregion
 
         /// <summary>
@@ -46,10 +61,9 @@ namespace Hotel.UI
         /// </summary>
         private void FrmCheck_Load(object sender, EventArgs e)
         {
-            cbxSex.SelectedIndex = 0;
             BindingRoomType();
-            cbxType_Click(sender,e);
-            dateTimePicker1.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            cbxType_Click(sender, e);
+            dtpArrivalDate.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
         }
 
         /// <summary>
@@ -90,28 +104,45 @@ namespace Hotel.UI
         /// <returns>是否为空</returns>
         private bool NonEmpty()
         {
-            if (txeName.Text.Trim().Equals(string.Empty))
+            if (txtName.Text.Trim().Equals(string.Empty))
             {
-                MessageBox.Show("请输入姓名！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                txeName.Focus();
+                MessageBox.Show("请输入姓名！", Prompt, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                txtName.Focus();
                 return false;
             }
             else if (txtNum.Text.Trim().Equals(string.Empty))
             {
-                MessageBox.Show("请输入身份证号！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("请输入身份证号！", Prompt, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtNum.Focus();
                 return false;
-
+            }
+            else if (txtNum.Text.Trim().Length != 18)
+            {
+                MessageBox.Show("身份证输入非法！", Prompt, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                txtNum.Focus();
+                return false;
             }
             else if (txtPhone.Text.Trim().Equals(string.Empty))
             {
-                MessageBox.Show("请输入联系电话！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("请输入联系电话！", Prompt, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtPhone.Focus();
+                return false;
+            }
+            else if (txtPhone.Text.Trim().Length != 11)
+            {
+                MessageBox.Show("联系电话输入非法！", Prompt, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                txtPhone.Focus();
+                return false;
+            }
+            else if (txtMoney.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("请输入押金！", Prompt, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                txtMoney.Focus();
                 return false;
             }
             else if (Convert.ToDouble(txtMoney.Text.Trim()) <= Convert.ToDouble((cbxRoom.SelectedValue)))
             {
-                MessageBox.Show("押金不能低于当前房价！");
+                MessageBox.Show("押金不能低于当前房价！", Prompt, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtMoney.Focus();
                 return false;
             }
@@ -121,5 +152,79 @@ namespace Hotel.UI
             }
         }
 
+        /// <summary>
+        /// 确定事件
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            Register();
+        }
+
+        /// <summary>
+        /// 登记订单
+        /// </summary>
+        private void Register()
+        {
+            if (NonEmpty())
+            {
+                string name = txtName.Text.Trim();
+                string cardNo = txtNum.Text.Trim();
+                string phone = txtPhone.Text.Trim();
+                string arrivalDateStr = dtpArrivalDate.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                bool sex = true;
+                if (rboMale.Checked == true)
+                {
+                    sex = true;
+                }
+                else
+                {
+                    sex = false;
+                }
+                int roomId = Convert.ToInt32(cbxRoom.Text.Trim());
+                double money = Convert.ToDouble(txtMoney.Text.Trim());
+                GuestInfo info = new GuestInfo() { Name = name, CardNo = cardNo, Phone = phone, Sex = sex };
+                string guestId = string.Empty;
+                if (checkComm.CheckExist(cardNo))
+                {
+                    guestId = checkComm.UpdateGuestInfo(info);
+                }
+                else
+                {
+                    guestId = checkComm.AddGuestInfo(info);
+                }
+
+                GuestRecord guest = new GuestRecord() { GuestID = Convert.ToInt32(guestId), Deposit = money, ArrivalDateStr = arrivalDateStr, RoomId = roomId };
+                checkComm.AddOrder(guest);
+                MessageBox.Show("登记成功");
+                Initialize();
+            }
+        }
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        private void Initialize()
+        {
+            txtName.Clear();
+            txtNum.Clear();
+            txtPhone.Clear();
+            txtMoney.Clear();
+            dtpArrivalDate.ResetText();
+            rboMale.Checked = true;
+            cbxType.SelectedIndex = 0;
+            cbxRoom.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// 清空
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            Initialize();
+        }
     }
 }

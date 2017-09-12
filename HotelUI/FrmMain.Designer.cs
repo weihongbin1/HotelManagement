@@ -656,6 +656,7 @@
             this.tsbCheckIn.Size = new System.Drawing.Size(60, 99);
             this.tsbCheckIn.Text = "入住登记";
             this.tsbCheckIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbCheckIn.Click += new System.EventHandler(this.tsbCheckIn_Click);
             // 
             // tsbQuery
             // 

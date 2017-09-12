@@ -380,5 +380,12 @@ namespace Hotel.UI
             guestInfo.ShowDialog();
             RenovateInfo();
         }
+
+        private void tsbCheckIn_Click(object sender, EventArgs e)
+        {
+            FrmCheck check = new FrmCheck();
+            check.ShowDialog();
+            RenovateInfo();
+        }
     }
 }
