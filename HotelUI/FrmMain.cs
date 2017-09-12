@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Hotel.DAL;
 using Hotel.UI.Single;
+using TJB;
 
 namespace Hotel.UI
 {
@@ -386,6 +387,12 @@ namespace Hotel.UI
             FrmCheck check = new FrmCheck();
             check.ShowDialog();
             RenovateInfo();
+        }
+
+        private void tsbStatistics_Click(object sender, EventArgs e)
+        {
+            Form1 f = new Form1();
+            f.ShowDialog();
         }
     }
 }

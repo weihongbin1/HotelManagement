@@ -9,7 +9,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Hotel.DAL;
-using Hotel.BLL;
 
 namespace Hotel.UI
 {

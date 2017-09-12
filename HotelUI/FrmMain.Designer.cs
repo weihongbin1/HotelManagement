@@ -645,6 +645,7 @@
             this.tsbStatistics.Size = new System.Drawing.Size(60, 99);
             this.tsbStatistics.Text = "收入统计";
             this.tsbStatistics.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbStatistics.Click += new System.EventHandler(this.tsbStatistics_Click);
             // 
             // tsbCheckIn
             // 

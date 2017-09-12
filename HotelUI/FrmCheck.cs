@@ -22,7 +22,7 @@ namespace Hotel.UI
         public int roomId { get; set; }
 
         /// <summary>
-        /// 输入提示--产量
+        /// 输入提示--常量
         /// </summary>
         private const string Prompt = "输入提示";
 
@@ -40,24 +40,37 @@ namespace Hotel.UI
         }
 
         #region 输入限制
+        /// <summary>
+        /// 限制手机号码输入只能是0-9
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             //利用ASCII码处理办法、48代表0，57代表9，8代表空格，46代表小数点
             if ((e.KeyChar <= 47 || e.KeyChar >= 58) && (e.KeyChar != 8))
                 e.Handled = true;
         }
-
+        /// <summary>
+        /// 限制押金输入只能是0-9和点 . 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtMoney_KeyPress(object sender, KeyPressEventArgs e)
         {
             //利用ASCII码处理办法、48代表0，57代表9，8代表空格，46代表小数点
             if ((e.KeyChar <= 47 || e.KeyChar >= 58) && (e.KeyChar != 8) && (e.KeyChar != 46))
                 e.Handled = true;
         }
-
+        /// <summary>
+        /// 限制身份证输入只能是0-9和大写X和小写x
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtNum_KeyPress(object sender, KeyPressEventArgs e)
         {
             //利用ASCII码处理办法、48代表0，57代表9，8代表空格，46代表小数点 ,88代表大写X,120代表小写x
-            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && (e.KeyChar != 8) && (e.KeyChar != 46) && (e.KeyChar != 88) && (e.KeyChar != 120))
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && (e.KeyChar != 8) && (e.KeyChar != 88) && (e.KeyChar != 120))
                 e.Handled = true;
         }
         #endregion
@@ -67,7 +80,7 @@ namespace Hotel.UI
         /// </summary>
         private void FrmCheck_Load(object sender, EventArgs e)
         {
-            if (this.roomId!=0)
+            if (this.roomId != 0)
             {
                 cbxRoom.Hide();
                 cbxType.Hide();
@@ -185,7 +198,9 @@ namespace Hotel.UI
                 string name = txtName.Text.Trim();
                 string cardNo = txtNum.Text.Trim();
                 string phone = txtPhone.Text.Trim();
+                //日期格式化
                 string arrivalDateStr = dtpArrivalDate.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                //性别
                 bool sex = true;
                 if (rboMale.Checked == true)
                 {
@@ -195,12 +210,16 @@ namespace Hotel.UI
                 {
                     sex = false;
                 }
-                if (roomId==0)
+                //为单个房间登记入住判断（不讲）
+                if (roomId == 0)
                 {
                     roomId = Convert.ToInt32(cbxRoom.Text.Trim());
                 }
+                //押金
                 double money = Convert.ToDouble(txtMoney.Text.Trim());
+                //客户信息对象初始化
                 GuestInfo info = new GuestInfo() { Name = name, CardNo = cardNo, Phone = phone, Sex = sex };
+                // 客户信息ID
                 string guestId = string.Empty;
                 if (checkComm.CheckExist(cardNo))
                 {
@@ -210,7 +229,7 @@ namespace Hotel.UI
                 {
                     guestId = checkComm.AddGuestInfo(info);
                 }
-
+                //订单对象初始化
                 GuestRecord guest = new GuestRecord() { GuestID = Convert.ToInt32(guestId), Deposit = money, ArrivalDateStr = arrivalDateStr, RoomId = roomId };
                 checkComm.AddOrder(guest);
                 MessageBox.Show("登记成功");
@@ -242,5 +261,6 @@ namespace Hotel.UI
         {
             Initialize();
         }
+
     }
 }

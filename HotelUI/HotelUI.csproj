@@ -296,6 +296,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\韩永琪TJB\TJB\TJB.csproj">
+      <Project>{8b59a3ab-cba8-498f-bd5e-c577192ca6ac}</Project>
+      <Name>TJB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HotelBLL\HotelBLL.csproj">
       <Project>{8f8314a8-82df-44e7-9d1c-91ec04714af3}</Project>
       <Name>HotelBLL</Name>
