@@ -12,13 +12,13 @@ using System.Data.SqlClient;
 namespace DengJi
 {
 
-    public partial class Form1 : Form
+    public partial class FrmCheck : Form
     {
         /// <summary>
         /// 数据集实例化
         /// </summary>
         DataSet ds = new DataSet();
-        public Form1()
+        public FrmCheck()
         {
             InitializeComponent();
         }

@@ -93,17 +93,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmAbout.Designer.cs">
       <DependentUpon>FrmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCheck.Designer.cs">
+      <DependentUpon>FrmCheck.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmFoods.cs">
       <SubType>Form</SubType>
@@ -173,11 +173,11 @@
     <Compile Include="Single\FrmSingleMain.Designer.cs">
       <DependentUpon>FrmSingleMain.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmAbout.resx">
       <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCheck.resx">
+      <DependentUpon>FrmCheck.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFoods.resx">
       <DependentUpon>FrmFoods.cs</DependentUpon>

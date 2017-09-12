@@ -378,6 +378,7 @@ namespace Hotel.UI
         {
             FrmGuestInfo guestInfo = new FrmGuestInfo();
             guestInfo.ShowDialog();
+            RenovateInfo();
         }
     }
 }

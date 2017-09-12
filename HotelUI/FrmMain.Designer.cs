@@ -484,7 +484,6 @@
             this.lvwRoomInfo.SmallImageList = this.imgsMinState;
             this.lvwRoomInfo.TabIndex = 0;
             this.lvwRoomInfo.UseCompatibleStateImageBehavior = false;
-            this.lvwRoomInfo.View = System.Windows.Forms.View.Tile;
             this.lvwRoomInfo.Click += new System.EventHandler(this.lvwRoomInfo_Click);
             // 
             // number

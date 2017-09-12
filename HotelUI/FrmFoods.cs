@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace Hotel.UI
 {
+    /// <summary>
+    /// 餐饮维护类
+    /// </summary>
     public partial class FrmFoods : Form
     {
         FrmFoodsComm foodsComm = new FrmFoodsComm();

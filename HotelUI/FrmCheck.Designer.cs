@@ -1,6 +1,9 @@
-﻿namespace DengJi
+﻿namespace Hotel.UI
 {
-    partial class Form1
+    /// <summary>
+    /// 入住登记类
+    /// </summary>
+    partial class FrmCheck
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -79,7 +82,7 @@
             // 
             // button1
             // 
-            this.button1.Image = global::DengJi.Properties.Resources.保存;
+            this.button1.Image = global::Hotel.UI.Properties.Resources.保存;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(408, 195);
             this.button1.Name = "button1";
@@ -87,12 +90,10 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "确定";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(105, 153);
-           
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(164, 21);
             this.dateTimePicker1.TabIndex = 3;
@@ -134,6 +135,7 @@
             this.txtMoney.Name = "txtMoney";
             this.txtMoney.Size = new System.Drawing.Size(164, 21);
             this.txtMoney.TabIndex = 6;
+            this.txtMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMoney_KeyPress);
             // 
             // txtPhone
             // 
@@ -141,6 +143,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(164, 21);
             this.txtPhone.TabIndex = 2;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // txtNum
             // 
@@ -235,15 +238,19 @@
             this.lblName.TabIndex = 0;
             this.lblName.Text = "客户姓名";
             // 
-            // Form1
+            // FrmCheck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 275);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "FrmCheck";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "顾客入住信息登记";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.FrmCheck_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

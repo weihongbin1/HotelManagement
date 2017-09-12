@@ -9,7 +9,7 @@ namespace Hotel.DAL
     /// <summary>
     /// 房间状态表
     /// </summary>
-    public class Room
+    public class Room : RoomType
     {
         /// <summary>
         /// 房间编号
@@ -23,6 +23,6 @@ namespace Hotel.DAL
         /// 房间状态ID
         /// </summary>
         public int RoomStateId { get; set; }
-       
+
     }
 }

@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="CheckOutInfo.cs" />
     <Compile Include="DBHerper.cs" />
+    <Compile Include="FrmCheckComm.cs" />
     <Compile Include="FrmFoodsComm.cs" />
     <Compile Include="FrmGuestInfoComm.cs" />
     <Compile Include="FrmLoginComm.cs" />

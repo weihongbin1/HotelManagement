@@ -119,19 +119,16 @@ namespace Hotel.DAL
         /// <param name="FoodTotal">消费</param>
         /// <param name="id">订单号</param>
         /// <returns>是否退房成功</returns>
-        public bool CheckOut(string RoomTotal, string FoodTotal, string id)
+        public void CheckOut(string RoomTotal, string FoodTotal, string id)
         {
             string sql = string.Format(@"UPDATE [dbo].[GuestRecord]
                 SET [LeaveDate]=GETDATE(),[RoomTotal]='{0}',[FoodTotal]='{1}'
-                WHERE [ID]='{2}'", RoomTotal, FoodTotal, id);
-            if (DBHerper.NonQuery(sql) == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+                WHERE [ID]='{2}'
+                UPDATE [dbo].[Room]
+                SET [RoomStateId]=2
+                WHERE [RoomId]=
+                (SELECT [RoomId] FROM  [dbo].[GuestRecord] WHERE [ID]='{2}')", RoomTotal, FoodTotal, id);
+            DBHerper.NonQuery(sql);
         }
 
         /// <summary>

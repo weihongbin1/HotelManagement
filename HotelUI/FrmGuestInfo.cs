@@ -154,15 +154,9 @@ namespace Hotel.UI
         /// </summary>
         private void CheckOut()
         {
-            if (guestInfoComm.CheckOut(txtRoomTotal.Text.Trim(), txtFoodTotal.Text.Trim(), dgvGuestInfo.SelectedRows[0].Cells["ID"].Value.ToString()))
-            {
-                MessageBox.Show("退房成功");
-                LoadOrder();
-            }
-            else
-            {
-                MessageBox.Show("退房失败");
-            }
+            guestInfoComm.CheckOut(txtRoomTotal.Text.Trim(), txtFoodTotal.Text.Trim(), dgvGuestInfo.SelectedRows[0].Cells["ID"].Value.ToString());
+            MessageBox.Show("退房成功");
+            LoadOrder();
         }
 
         /// <summary>
@@ -218,6 +212,27 @@ namespace Hotel.UI
             else
             {
                 ScreenRecord(Convert.ToInt32(txtRRoomId.Text.Trim()));
+            }
+        }
+
+        /// <summary>
+        /// 当选项卡顶层发生改变
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            LoadOrder();
+            LoadRecord();
+            MessageBox.Show(tabControl1.SelectedIndex.ToString());
+            if (tabControl1.SelectedIndex==1)
+            {
+                this.MaximizeBox = true;
+            }
+            else
+            {
+                this.MaximizeBox = false;
+                this.WindowState = FormWindowState.Normal;
             }
         }
     }
