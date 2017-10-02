@@ -142,38 +142,17 @@ namespace Hotel.UI
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked==true)
-            {
-                txtOldPwd.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                txtOldPwd.UseSystemPasswordChar = true;
-            }
+            txtOldPwd.UseSystemPasswordChar = (checkBox1.Checked == true) ? false : true;
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked == true)
-            {
-                txtPwd .UseSystemPasswordChar = false;
-            }
-            else
-            {
-                txtPwd.UseSystemPasswordChar = true;
-            }
+            txtPwd.UseSystemPasswordChar = (checkBox2.Checked == true) ? false : true;
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox3.Checked == true)
-            {
-                txtNewPwd.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                txtNewPwd.UseSystemPasswordChar = true;
-            }
+            txtNewPwd.UseSystemPasswordChar = (checkBox3.Checked == true) ? false : true;
         }
     }
 }

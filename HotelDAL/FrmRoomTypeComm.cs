@@ -72,15 +72,8 @@ namespace Hotel.DAL
         {
             string sql = string.Format(@"UPDATE [dbo].[RoomType]
                 SET [TypeName]='{0}',[TypeWindow]='{1}',[BedNum]='{2}',[TypePrice]='{3}'
-                WHERE [TypeId]='{4}'",type.TypeName,type.TypeWindow,type.BedNum,type.TypePrice,type.TypeId);
-            if (DBHerper.NonQuery(sql)==1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+                WHERE [TypeId]='{4}'", type.TypeName, type.TypeWindow, type.BedNum, type.TypePrice, type.TypeId);
+            return (DBHerper.NonQuery(sql) == 1) ? true : false;
         }
 
         /// <summary>
@@ -94,14 +87,7 @@ namespace Hotel.DAL
                 FROM [dbo].[Room]
                 WHERE [RoomTypeId] ='{0}'", id);
             object judge = DBHerper.Scalar(sql);
-            if (Convert.ToInt32(judge)!=0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (Convert.ToInt32(judge) != 0) ? true : false;
         }
 
         /// <summary>
@@ -112,16 +98,9 @@ namespace Hotel.DAL
         public bool DeleteType(string id)
         {
             string sql = string.Format(@"DELETE [dbo].[RoomType]
-                WHERE [TypeId]='{0}'",id);
+                WHERE [TypeId]='{0}'", id);
             object judge = DBHerper.NonQuery(sql);
-            if (Convert.ToInt32(judge )!=0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (Convert.ToInt32(judge) != 0) ? true : false;
         }
     }
 }

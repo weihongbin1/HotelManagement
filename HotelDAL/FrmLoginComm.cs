@@ -28,14 +28,7 @@ namespace Hotel.DAL
             try
             {
                 int judge = Convert.ToInt32(DBHerper.Scalar(sql));
-                if (judge == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return (judge == 1) ? true : false;
             }
             catch (Exception e)
             {
@@ -60,14 +53,7 @@ namespace Hotel.DAL
             try
             {
                 int judge = DBHerper.NonQuery(sql);
-                if (judge == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return (judge == 1) ? true : false;
             }
             catch (Exception e)
             {

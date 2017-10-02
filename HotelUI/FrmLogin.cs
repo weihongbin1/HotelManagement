@@ -97,9 +97,8 @@ namespace Hotel.UI
                 FrmLoginComm loginComm = new FrmLoginComm();
                 if (loginComm.Check(admin))
                 {
-                    FrmMain main = new FrmMain() { Admin = txtUser.Text.Trim() };
+                    new FrmMain() { Admin = txtUser.Text.Trim() }.ShowDialog();
                     this.Hide();
-                    main.ShowDialog();
                     this.Close();
                 }
                 else
@@ -111,19 +110,16 @@ namespace Hotel.UI
         }
 
 
-
+        /// <summary>
+        /// 是否显示密码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked == true)
-            {
-                txtPwd.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                txtPwd.UseSystemPasswordChar = true;
-            }
+            txtPwd.UseSystemPasswordChar = (checkBox1.Checked == true) ? false : true;
         }
 
-        
+
     }
 }

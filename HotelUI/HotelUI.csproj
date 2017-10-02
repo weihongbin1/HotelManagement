@@ -243,7 +243,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\128X128.ico" />
-    <Content Include="Resources\aboutImg.jpg" />
     <None Include="Resources\About\1.jpg" />
     <None Include="Resources\About\2.jpg" />
     <None Include="Resources\About\3.jpg" />

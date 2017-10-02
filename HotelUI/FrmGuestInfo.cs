@@ -65,8 +65,7 @@ namespace Hotel.UI
         /// </summary>
         private void LoadOrder()
         {
-            List<GuestRecord> list = guestInfoComm.LoadOrder();
-            dgvGuestInfo.DataSource = list;
+            dgvGuestInfo.DataSource = guestInfoComm.LoadOrder();
         }
 
         /// <summary>
@@ -75,8 +74,7 @@ namespace Hotel.UI
         /// <param name="name">客户姓名</param>
         private void ScreenOrder(string name)
         {
-            List<GuestRecord> list = guestInfoComm.ScreenOrder(name);
-            dgvGuestInfo.DataSource = list;
+            dgvGuestInfo.DataSource = guestInfoComm.ScreenOrder(name);
         }
 
         /// <summary>
@@ -85,8 +83,7 @@ namespace Hotel.UI
         /// <param name="roomID">房间编号</param>
         private void ScreenOrder(int roomID)
         {
-            List<GuestRecord> list = guestInfoComm.ScreenOrder(roomID);
-            dgvGuestInfo.DataSource = list;
+            dgvGuestInfo.DataSource = guestInfoComm.ScreenOrder(roomID);
         }
 
         /// <summary>
@@ -164,8 +161,7 @@ namespace Hotel.UI
         /// </summary>
         private void LoadRecord()
         {
-            List<GuestRecord> list = guestInfoComm.LoadRecord();
-            dgvRecord.DataSource = list;
+            dgvRecord.DataSource = guestInfoComm.LoadRecord();
         }
 
         /// <summary>
@@ -174,8 +170,7 @@ namespace Hotel.UI
         /// <param name="name">姓名</param>
         private void ScreenRecord(string name)
         {
-            List<GuestRecord> list = guestInfoComm.ScreenRecord(name);
-            dgvRecord.DataSource = list;
+            dgvRecord.DataSource = guestInfoComm.ScreenRecord(name);
         }
 
         /// <summary>
@@ -184,8 +179,7 @@ namespace Hotel.UI
         /// <param name="RoomId">房间编号</param>
         private void ScreenRecord(int RoomId)
         {
-            List<GuestRecord> list = guestInfoComm.ScreenRecord(RoomId);
-            dgvRecord.DataSource = list;
+            dgvRecord.DataSource = guestInfoComm.ScreenRecord(RoomId);
         }
 
         /// <summary>
@@ -224,7 +218,7 @@ namespace Hotel.UI
         {
             LoadOrder();
             LoadRecord();
-            if (tabControl1.SelectedIndex==1)
+            if (tabControl1.SelectedIndex == 1)
             {
                 this.MaximizeBox = true;
             }

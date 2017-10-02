@@ -149,8 +149,7 @@ namespace Hotel.UI
         /// <param name="e">e</param>
         private void xiuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmModifyPwd modifyPwd = new FrmModifyPwd() { id = this.Admin };
-            modifyPwd.ShowDialog();
+            new FrmModifyPwd() { id = this.Admin }.ShowDialog();
         }
 
         /// <summary>
@@ -170,11 +169,8 @@ namespace Hotel.UI
         /// <param name="e">e</param>
         private void lvwRoomInfo_Click(object sender, EventArgs e)
         {
-            FrmSingleMain frmSingle = new FrmSingleMain();
-            frmSingle.RoomId = lvwRoomInfo.SelectedItems[0].Text;
-            frmSingle.ShowDialog();
+            new FrmSingleMain() { RoomId = lvwRoomInfo.SelectedItems[0].Text }.ShowDialog();
             RenovateInfo();
-            //MessageBox.Show(lvwRoomInfo.SelectedItems[0].Text);
         }
 
         /// <summary>

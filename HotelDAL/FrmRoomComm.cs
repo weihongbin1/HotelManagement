@@ -91,14 +91,7 @@ namespace Hotel.DAL
             else
             {
                 sql = string.Format(@"INSERT Room VALUES ('{0}','{1}','{2}')", room.RoomId, room.RoomTypeId, room.RoomStateId);
-                if (Convert.ToInt32(DBHerper.NonQuery(sql)) == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return (Convert.ToInt32(DBHerper.NonQuery(sql)) == 1) ? true : false;
             }
         }
 
@@ -122,14 +115,7 @@ namespace Hotel.DAL
                 sql = string.Format(@"UPDATE Room
                     SET RoomId='{0}',RoomTypeId='{1}',RoomStateId='{2}'
                     WHERE RoomId='{3}'", room.RoomId, room.RoomTypeId, room.RoomStateId, id);
-                if (Convert.ToInt32(DBHerper.NonQuery(sql)) == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return (Convert.ToInt32(DBHerper.NonQuery(sql)) == 1) ? true : false;
             }
         }
 
@@ -143,14 +129,7 @@ namespace Hotel.DAL
             string sql = string.Format(@"SELECT count(*)
                 FROM GuestRecord
                 WHERE RoomId='{0}'", id);
-            if (Convert.ToInt32(DBHerper.Scalar(sql)) != 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (Convert.ToInt32(DBHerper.Scalar(sql)) != 0) ? true : false;
         }
 
         /// <summary>
@@ -162,14 +141,7 @@ namespace Hotel.DAL
         {
             string sql = string.Format(@"DELETE Room
                 WHERE RoomId='{0}'", id);
-            if (Convert.ToInt32(DBHerper.NonQuery(sql)) != 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (Convert.ToInt32(DBHerper.NonQuery(sql)) != 0)? true : false;
         }
 
         /// <summary>
@@ -179,11 +151,11 @@ namespace Hotel.DAL
         /// <returns>房间信息对象</returns>
         public RoomInfo GetRoomTypeId(string roomId)
         {
-            RoomInfo room = new RoomInfo(); 
+            RoomInfo room = new RoomInfo();
             string sql = string.Format(@"SELECT [RoomTypeId],[RoomStateId]
                 FROM [dbo].[Room]
                 WHERE [RoomId]='{0}'", roomId);
-            SqlDataReader r= DBHerper.Reader(sql);
+            SqlDataReader r = DBHerper.Reader(sql);
             if (r.Read())
             {
                 room.RoomRype = r[0].ToString();
@@ -193,24 +165,17 @@ namespace Hotel.DAL
             return room;
         }
 
-       /// <summary>
-       /// 修改房间信息
-       /// </summary>
-       /// <param name="room">房间信息对象</param>
-       /// <returns>是否修改成功</returns>
+        /// <summary>
+        /// 修改房间信息
+        /// </summary>
+        /// <param name="room">房间信息对象</param>
+        /// <returns>是否修改成功</returns>
         public bool UpdateRoomInfo(Room room)
         {
             string sql = string.Format(@"UPDATE [dbo].[Room]
                 SET [RoomTypeId]='{0}', [RoomStateId]='{1}'
-                WHERE [RoomId]='{2}'",room.RoomTypeId,room.RoomStateId,room.RoomId);
-            if (DBHerper.NonQuery(sql)==1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+                WHERE [RoomId]='{2}'", room.RoomTypeId, room.RoomStateId, room.RoomId);
+            return (DBHerper.NonQuery(sql) == 1) ? true : false;
         }
 
     }

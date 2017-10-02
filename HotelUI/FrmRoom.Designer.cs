@@ -101,22 +101,22 @@
             // rboFree
             // 
             this.rboFree.AutoSize = true;
+            this.rboFree.Checked = true;
             this.rboFree.Location = new System.Drawing.Point(281, 24);
             this.rboFree.Name = "rboFree";
             this.rboFree.Size = new System.Drawing.Size(47, 16);
             this.rboFree.TabIndex = 8;
+            this.rboFree.TabStop = true;
             this.rboFree.Text = "空闲";
             this.rboFree.UseVisualStyleBackColor = true;
             // 
             // rboCheck
             // 
             this.rboCheck.AutoSize = true;
-            this.rboCheck.Checked = true;
             this.rboCheck.Location = new System.Drawing.Point(232, 24);
             this.rboCheck.Name = "rboCheck";
             this.rboCheck.Size = new System.Drawing.Size(47, 16);
             this.rboCheck.TabIndex = 8;
-            this.rboCheck.TabStop = true;
             this.rboCheck.Text = "入住";
             this.rboCheck.UseVisualStyleBackColor = true;
             // 
