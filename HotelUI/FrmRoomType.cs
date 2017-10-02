@@ -358,7 +358,5 @@ namespace Hotel.UI
             }
 
         }
-
-      
     }
 }

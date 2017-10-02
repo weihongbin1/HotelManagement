@@ -275,6 +275,7 @@ namespace Hotel.UI
             tmiUpdate.Enabled = true;
             tsbDelete.Enabled = true;
             tmiDelete.Enabled = true;
+            txtRoomId.Clear();
         }
 
         /// <summary>
@@ -306,7 +307,7 @@ namespace Hotel.UI
                 if (roomComm.AddRoom(room))
                 {
                     InitilizeEdit();
-                    
+
                 }
                 else
                 {
@@ -355,8 +356,8 @@ namespace Hotel.UI
         }
 
 
-        
 
-      
+
+
     }
 }

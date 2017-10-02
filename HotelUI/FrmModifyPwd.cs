@@ -112,7 +112,8 @@ namespace Hotel.UI
                     if (frmLoginComm.UpadtePwd(admin))
                     {
                         MessageBox.Show("修改成功");
-                        this.Close();
+                        //this.Close();
+                        Application.Restart();
                     }
                     else
                     {

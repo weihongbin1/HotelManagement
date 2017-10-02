@@ -9,6 +9,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Hotel.DAL;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace Hotel.UI
 {
@@ -23,7 +25,6 @@ namespace Hotel.UI
         public FrmLogin()
         {
             InitializeComponent();
-
         }
 
         /// <summary>
@@ -122,5 +123,7 @@ namespace Hotel.UI
                 txtPwd.UseSystemPasswordChar = true;
             }
         }
+
+        
     }
 }

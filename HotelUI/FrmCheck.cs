@@ -168,7 +168,7 @@ namespace Hotel.UI
             }
             else if (Convert.ToDouble(txtMoney.Text.Trim()) <= Convert.ToDouble((cbxRoom.SelectedValue)))
             {
-                MessageBox.Show("押金不能低于当前房价！", Prompt, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("押金不能低于当前房价,当前房价"+ cbxRoom.SelectedValue, Prompt, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtMoney.Focus();
                 return false;
             }
@@ -261,6 +261,7 @@ namespace Hotel.UI
         {
             Initialize();
         }
+
 
     }
 }

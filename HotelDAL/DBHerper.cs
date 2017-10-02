@@ -42,7 +42,7 @@ namespace Hotel.DAL
         /// <summary>
         /// 打开数据库连接
         /// </summary>
-        private  static void Open()
+        public  static void Open()
         {
             if (Conn.State == ConnectionState.Closed)
             {
@@ -58,7 +58,7 @@ namespace Hotel.DAL
         /// <summary>
         /// 关闭数据库连接
         /// </summary>
-        private static void Close()
+        public static void Close()
         {
             if (Conn.State == ConnectionState.Open || Conn.State == ConnectionState.Broken)
             {
